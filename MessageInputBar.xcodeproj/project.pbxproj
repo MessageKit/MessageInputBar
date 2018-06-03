@@ -8,9 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		386FB18620C496C1006A93BA /* MessageInputBar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 386FB17C20C496C1006A93BA /* MessageInputBar.framework */; };
-		386FB18B20C496C1006A93BA /* MessageInputBarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386FB18A20C496C1006A93BA /* MessageInputBarTests.swift */; };
 		386FB18D20C496C1006A93BA /* MessageInputBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 386FB17F20C496C1006A93BA /* MessageInputBar.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		386FB19C20C499B3006A93BA /* InputBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386FB19620C499B2006A93BA /* InputBarItem.swift */; };
+		386FB19C20C499B3006A93BA /* InputBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386FB19620C499B2006A93BA /* InputBarButtonItem.swift */; };
 		386FB19D20C499B3006A93BA /* InputStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386FB19720C499B3006A93BA /* InputStackView.swift */; };
 		386FB19E20C499B3006A93BA /* InputTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386FB19820C499B3006A93BA /* InputTextView.swift */; };
 		386FB19F20C499B3006A93BA /* MessageInputBarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386FB19920C499B3006A93BA /* MessageInputBarDelegate.swift */; };
@@ -18,6 +17,9 @@
 		386FB1A120C499B3006A93BA /* SeparatorLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386FB19B20C499B3006A93BA /* SeparatorLine.swift */; };
 		386FB1A320C49A9B006A93BA /* NSConstraintLayoutSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386FB1A220C49A9B006A93BA /* NSConstraintLayoutSet.swift */; };
 		386FB1A520C49B39006A93BA /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386FB1A420C49B39006A93BA /* UIView+Extensions.swift */; };
+		386FB1CA20C49F5B006A93BA /* InputBarItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386FB1C620C49EE8006A93BA /* InputBarItemTests.swift */; };
+		386FB1CB20C49F60006A93BA /* InputTextViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386FB1C420C49EE7006A93BA /* InputTextViewTests.swift */; };
+		386FB1CC20C49F60006A93BA /* MessageInputBarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386FB1C520C49EE7006A93BA /* MessageInputBarTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,9 +37,8 @@
 		386FB17F20C496C1006A93BA /* MessageInputBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageInputBar.h; sourceTree = "<group>"; };
 		386FB18020C496C1006A93BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		386FB18520C496C1006A93BA /* MessageInputBarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MessageInputBarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		386FB18A20C496C1006A93BA /* MessageInputBarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageInputBarTests.swift; sourceTree = "<group>"; };
 		386FB18C20C496C1006A93BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		386FB19620C499B2006A93BA /* InputBarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputBarItem.swift; sourceTree = "<group>"; };
+		386FB19620C499B2006A93BA /* InputBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputBarButtonItem.swift; sourceTree = "<group>"; };
 		386FB19720C499B3006A93BA /* InputStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputStackView.swift; sourceTree = "<group>"; };
 		386FB19820C499B3006A93BA /* InputTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputTextView.swift; sourceTree = "<group>"; };
 		386FB19920C499B3006A93BA /* MessageInputBarDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageInputBarDelegate.swift; sourceTree = "<group>"; };
@@ -45,6 +46,9 @@
 		386FB19B20C499B3006A93BA /* SeparatorLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeparatorLine.swift; sourceTree = "<group>"; };
 		386FB1A220C49A9B006A93BA /* NSConstraintLayoutSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSConstraintLayoutSet.swift; sourceTree = "<group>"; };
 		386FB1A420C49B39006A93BA /* UIView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
+		386FB1C420C49EE7006A93BA /* InputTextViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputTextViewTests.swift; sourceTree = "<group>"; };
+		386FB1C520C49EE7006A93BA /* MessageInputBarTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageInputBarTests.swift; sourceTree = "<group>"; };
+		386FB1C620C49EE8006A93BA /* InputBarItemTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputBarItemTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,12 +92,12 @@
 			isa = PBXGroup;
 			children = (
 				386FB17F20C496C1006A93BA /* MessageInputBar.h */,
-				386FB19620C499B2006A93BA /* InputBarItem.swift */,
+				386FB19620C499B2006A93BA /* InputBarButtonItem.swift */,
 				386FB19720C499B3006A93BA /* InputStackView.swift */,
 				386FB19820C499B3006A93BA /* InputTextView.swift */,
+				386FB19B20C499B3006A93BA /* SeparatorLine.swift */,
 				386FB19A20C499B3006A93BA /* MessageInputBar.swift */,
 				386FB19920C499B3006A93BA /* MessageInputBarDelegate.swift */,
-				386FB19B20C499B3006A93BA /* SeparatorLine.swift */,
 				386FB1A220C49A9B006A93BA /* NSConstraintLayoutSet.swift */,
 				386FB1A420C49B39006A93BA /* UIView+Extensions.swift */,
 				386FB18020C496C1006A93BA /* Info.plist */,
@@ -104,7 +108,9 @@
 		386FB18920C496C1006A93BA /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				386FB18A20C496C1006A93BA /* MessageInputBarTests.swift */,
+				386FB1C620C49EE8006A93BA /* InputBarItemTests.swift */,
+				386FB1C420C49EE7006A93BA /* InputTextViewTests.swift */,
+				386FB1C520C49EE7006A93BA /* MessageInputBarTests.swift */,
 				386FB18C20C496C1006A93BA /* Info.plist */,
 			);
 			path = Tests;
@@ -226,7 +232,7 @@
 				386FB19D20C499B3006A93BA /* InputStackView.swift in Sources */,
 				386FB1A320C49A9B006A93BA /* NSConstraintLayoutSet.swift in Sources */,
 				386FB1A520C49B39006A93BA /* UIView+Extensions.swift in Sources */,
-				386FB19C20C499B3006A93BA /* InputBarItem.swift in Sources */,
+				386FB19C20C499B3006A93BA /* InputBarButtonItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -234,7 +240,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				386FB18B20C496C1006A93BA /* MessageInputBarTests.swift in Sources */,
+				386FB1CB20C49F60006A93BA /* InputTextViewTests.swift in Sources */,
+				386FB1CA20C49F5B006A93BA /* InputBarItemTests.swift in Sources */,
+				386FB1CC20C49F60006A93BA /* MessageInputBarTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -427,7 +435,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = MessageInputBarTests/Info.plist;
+				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -445,7 +453,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = MessageInputBarTests/Info.plist;
+				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
