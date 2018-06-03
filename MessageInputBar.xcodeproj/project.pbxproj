@@ -53,8 +53,8 @@
 		386FB17220C496C1006A93BA = {
 			isa = PBXGroup;
 			children = (
-				386FB17E20C496C1006A93BA /* MessageInputBar */,
-				386FB18920C496C1006A93BA /* MessageInputBarTests */,
+				386FB17E20C496C1006A93BA /* Sources */,
+				386FB18920C496C1006A93BA /* Tests */,
 				386FB17D20C496C1006A93BA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -68,22 +68,22 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		386FB17E20C496C1006A93BA /* MessageInputBar */ = {
+		386FB17E20C496C1006A93BA /* Sources */ = {
 			isa = PBXGroup;
 			children = (
 				386FB17F20C496C1006A93BA /* MessageInputBar.h */,
 				386FB18020C496C1006A93BA /* Info.plist */,
 			);
-			path = MessageInputBar;
+			path = Sources;
 			sourceTree = "<group>";
 		};
-		386FB18920C496C1006A93BA /* MessageInputBarTests */ = {
+		386FB18920C496C1006A93BA /* Tests */ = {
 			isa = PBXGroup;
 			children = (
 				386FB18A20C496C1006A93BA /* MessageInputBarTests.swift */,
 				386FB18C20C496C1006A93BA /* Info.plist */,
 			);
-			path = MessageInputBarTests;
+			path = Tests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
