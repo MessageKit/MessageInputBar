@@ -61,6 +61,7 @@ class InputBarItemTests: XCTestCase {
 
     func testIsHighlightedProperty() {
         var onSelectedCalled = false
+        
         button.onSelected { (_) in
             onSelectedCalled = true
         }
@@ -72,6 +73,8 @@ class InputBarItemTests: XCTestCase {
 
     func testIsNotHighlightedProperty() {
         var onDeselectedCalled = false
+        
+        button.isHighlighted = true
         button.onDeselected { (_) in
             onDeselectedCalled = true
         }

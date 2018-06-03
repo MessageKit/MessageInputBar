@@ -112,11 +112,11 @@ open class InputBarButtonItem: UIButton, InputItem {
             return super.isHighlighted
         }
         set {
-            guard newValue != isHighlighted else { return }
+            let oldValue = isHighlighted
             super.isHighlighted = newValue
-            if newValue {
+            if newValue, newValue != oldValue {
                 onSelectedAction?(self)
-            } else {
+            } else if !newValue, newValue != oldValue {
                 onDeselectedAction?(self)
             }
             
