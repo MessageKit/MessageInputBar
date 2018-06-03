@@ -1,0 +1,16 @@
+PODS:
+  - MessageInputBar (0.1.0)
+
+DEPENDENCIES:
+  - MessageInputBar (from `../`)
+
+EXTERNAL SOURCES:
+  MessageInputBar:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  MessageInputBar: 2375b9f7af96adac3e8ea8673b61add14debdd67
+
+PODFILE CHECKSUM: 226791787b6af407d42da6f779d208a2567eec5a
+
+COCOAPODS: 1.5.2

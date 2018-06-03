@@ -10,6 +10,14 @@
 		386FB18620C496C1006A93BA /* MessageInputBar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 386FB17C20C496C1006A93BA /* MessageInputBar.framework */; };
 		386FB18B20C496C1006A93BA /* MessageInputBarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386FB18A20C496C1006A93BA /* MessageInputBarTests.swift */; };
 		386FB18D20C496C1006A93BA /* MessageInputBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 386FB17F20C496C1006A93BA /* MessageInputBar.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		386FB19C20C499B3006A93BA /* InputBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386FB19620C499B2006A93BA /* InputBarItem.swift */; };
+		386FB19D20C499B3006A93BA /* InputStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386FB19720C499B3006A93BA /* InputStackView.swift */; };
+		386FB19E20C499B3006A93BA /* InputTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386FB19820C499B3006A93BA /* InputTextView.swift */; };
+		386FB19F20C499B3006A93BA /* MessageInputBarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386FB19920C499B3006A93BA /* MessageInputBarDelegate.swift */; };
+		386FB1A020C499B3006A93BA /* MessageInputBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386FB19A20C499B3006A93BA /* MessageInputBar.swift */; };
+		386FB1A120C499B3006A93BA /* SeparatorLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386FB19B20C499B3006A93BA /* SeparatorLine.swift */; };
+		386FB1A320C49A9B006A93BA /* NSConstraintLayoutSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386FB1A220C49A9B006A93BA /* NSConstraintLayoutSet.swift */; };
+		386FB1A520C49B39006A93BA /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386FB1A420C49B39006A93BA /* UIView+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +37,14 @@
 		386FB18520C496C1006A93BA /* MessageInputBarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MessageInputBarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		386FB18A20C496C1006A93BA /* MessageInputBarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageInputBarTests.swift; sourceTree = "<group>"; };
 		386FB18C20C496C1006A93BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		386FB19620C499B2006A93BA /* InputBarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputBarItem.swift; sourceTree = "<group>"; };
+		386FB19720C499B3006A93BA /* InputStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputStackView.swift; sourceTree = "<group>"; };
+		386FB19820C499B3006A93BA /* InputTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputTextView.swift; sourceTree = "<group>"; };
+		386FB19920C499B3006A93BA /* MessageInputBarDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageInputBarDelegate.swift; sourceTree = "<group>"; };
+		386FB19A20C499B3006A93BA /* MessageInputBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageInputBar.swift; sourceTree = "<group>"; };
+		386FB19B20C499B3006A93BA /* SeparatorLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeparatorLine.swift; sourceTree = "<group>"; };
+		386FB1A220C49A9B006A93BA /* NSConstraintLayoutSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSConstraintLayoutSet.swift; sourceTree = "<group>"; };
+		386FB1A420C49B39006A93BA /* UIView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +88,14 @@
 			isa = PBXGroup;
 			children = (
 				386FB17F20C496C1006A93BA /* MessageInputBar.h */,
+				386FB19620C499B2006A93BA /* InputBarItem.swift */,
+				386FB19720C499B3006A93BA /* InputStackView.swift */,
+				386FB19820C499B3006A93BA /* InputTextView.swift */,
+				386FB19A20C499B3006A93BA /* MessageInputBar.swift */,
+				386FB19920C499B3006A93BA /* MessageInputBarDelegate.swift */,
+				386FB19B20C499B3006A93BA /* SeparatorLine.swift */,
+				386FB1A220C49A9B006A93BA /* NSConstraintLayoutSet.swift */,
+				386FB1A420C49B39006A93BA /* UIView+Extensions.swift */,
 				386FB18020C496C1006A93BA /* Info.plist */,
 			);
 			path = Sources;
@@ -148,6 +172,7 @@
 				TargetAttributes = {
 					386FB17B20C496C1006A93BA = {
 						CreatedOnToolsVersion = 9.4;
+						LastSwiftMigration = 0940;
 					};
 					386FB18420C496C1006A93BA = {
 						CreatedOnToolsVersion = 9.4;
@@ -194,6 +219,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				386FB19E20C499B3006A93BA /* InputTextView.swift in Sources */,
+				386FB19F20C499B3006A93BA /* MessageInputBarDelegate.swift in Sources */,
+				386FB1A020C499B3006A93BA /* MessageInputBar.swift in Sources */,
+				386FB1A120C499B3006A93BA /* SeparatorLine.swift in Sources */,
+				386FB19D20C499B3006A93BA /* InputStackView.swift in Sources */,
+				386FB1A320C49A9B006A93BA /* NSConstraintLayoutSet.swift in Sources */,
+				386FB1A520C49B39006A93BA /* UIView+Extensions.swift in Sources */,
+				386FB19C20C499B3006A93BA /* InputBarItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,14 +372,16 @@
 		386FB19120C496C1006A93BA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = MessageInputBar/Info.plist;
+				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -355,6 +390,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.messagekit.MessageInputBar;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -363,14 +399,16 @@
 		386FB19220C496C1006A93BA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = MessageInputBar/Info.plist;
+				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -387,6 +425,7 @@
 		386FB19420C496C1006A93BA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = MessageInputBarTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -404,6 +443,7 @@
 		386FB19520C496C1006A93BA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = MessageInputBarTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
