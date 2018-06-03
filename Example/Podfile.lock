@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  MessageInputBar: 2375b9f7af96adac3e8ea8673b61add14debdd67
+  MessageInputBar: 3e04412ea8a386b41088012f8c9bd67e665a70c1
 
 PODFILE CHECKSUM: 226791787b6af407d42da6f779d208a2567eec5a
 

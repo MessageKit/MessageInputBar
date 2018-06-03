@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		380F6E7520C4A9A80095975F /* InputItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380F6E7420C4A9A80095975F /* InputItem.swift */; };
 		386FB18620C496C1006A93BA /* MessageInputBar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 386FB17C20C496C1006A93BA /* MessageInputBar.framework */; };
 		386FB18D20C496C1006A93BA /* MessageInputBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 386FB17F20C496C1006A93BA /* MessageInputBar.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		386FB19C20C499B3006A93BA /* InputBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386FB19620C499B2006A93BA /* InputBarButtonItem.swift */; };
@@ -33,6 +34,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		380F6E6F20C4A6FE0095975F /* MessageInputBar.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = MessageInputBar.podspec; sourceTree = "<group>"; };
+		380F6E7020C4A6FE0095975F /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		380F6E7120C4A6FE0095975F /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
+		380F6E7420C4A9A80095975F /* InputItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputItem.swift; sourceTree = "<group>"; };
 		386FB17C20C496C1006A93BA /* MessageInputBar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MessageInputBar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		386FB17F20C496C1006A93BA /* MessageInputBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageInputBar.h; sourceTree = "<group>"; };
 		386FB18020C496C1006A93BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -70,9 +75,55 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		380F6E7620C4AD800095975F /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				380F6E7420C4A9A80095975F /* InputItem.swift */,
+				386FB19920C499B3006A93BA /* MessageInputBarDelegate.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		380F6E7720C4AD890095975F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				386FB1A420C49B39006A93BA /* UIView+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		380F6E7820C4ADAC0095975F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				386FB19720C499B3006A93BA /* InputStackView.swift */,
+				386FB19820C499B3006A93BA /* InputTextView.swift */,
+				386FB19B20C499B3006A93BA /* SeparatorLine.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		380F6E7920C4ADB80095975F /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+				386FB19620C499B2006A93BA /* InputBarButtonItem.swift */,
+			);
+			path = Controls;
+			sourceTree = "<group>";
+		};
+		380F6E7A20C4ADC00095975F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				386FB1A220C49A9B006A93BA /* NSConstraintLayoutSet.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		386FB17220C496C1006A93BA = {
 			isa = PBXGroup;
 			children = (
+				380F6E7020C4A6FE0095975F /* README.md */,
+				380F6E7120C4A6FE0095975F /* CHANGELOG.md */,
+				380F6E6F20C4A6FE0095975F /* MessageInputBar.podspec */,
 				386FB17E20C496C1006A93BA /* Sources */,
 				386FB18920C496C1006A93BA /* Tests */,
 				386FB17D20C496C1006A93BA /* Products */,
@@ -92,14 +143,12 @@
 			isa = PBXGroup;
 			children = (
 				386FB17F20C496C1006A93BA /* MessageInputBar.h */,
-				386FB19620C499B2006A93BA /* InputBarButtonItem.swift */,
-				386FB19720C499B3006A93BA /* InputStackView.swift */,
-				386FB19820C499B3006A93BA /* InputTextView.swift */,
-				386FB19B20C499B3006A93BA /* SeparatorLine.swift */,
 				386FB19A20C499B3006A93BA /* MessageInputBar.swift */,
-				386FB19920C499B3006A93BA /* MessageInputBarDelegate.swift */,
-				386FB1A220C49A9B006A93BA /* NSConstraintLayoutSet.swift */,
-				386FB1A420C49B39006A93BA /* UIView+Extensions.swift */,
+				380F6E7820C4ADAC0095975F /* Views */,
+				380F6E7920C4ADB80095975F /* Controls */,
+				380F6E7A20C4ADC00095975F /* Models */,
+				380F6E7620C4AD800095975F /* Protocols */,
+				380F6E7720C4AD890095975F /* Extensions */,
 				386FB18020C496C1006A93BA /* Info.plist */,
 			);
 			path = Sources;
@@ -227,6 +276,7 @@
 			files = (
 				386FB19E20C499B3006A93BA /* InputTextView.swift in Sources */,
 				386FB19F20C499B3006A93BA /* MessageInputBarDelegate.swift in Sources */,
+				380F6E7520C4A9A80095975F /* InputItem.swift in Sources */,
 				386FB1A020C499B3006A93BA /* MessageInputBar.swift in Sources */,
 				386FB1A120C499B3006A93BA /* SeparatorLine.swift in Sources */,
 				386FB19D20C499B3006A93BA /* InputStackView.swift in Sources */,

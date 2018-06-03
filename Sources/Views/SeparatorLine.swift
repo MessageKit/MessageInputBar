@@ -25,48 +25,45 @@
 import UIKit
 
 /**
- A UIStackView that's intended for holding `InputBarButtonItem`s
+ A UIView thats intrinsicContentSize is overrided so an exact height can be specified
  
  ## Important Notes ##
- 1. Default alignment is .fill
- 2. Default distribution is .fill
- 3. The distribution property needs to be based on its arranged subviews intrinsicContentSize so it is not recommended to change it
+ 1. Default height is 1.0
+ 2. Default backgroundColor is UIColor.lightGray
+ 3. Intended to be used in an `InputStackView`
  */
-open class InputStackView: UIStackView {
+open class SeparatorLine: UIView {
     
-    /// The stack view position in the MessageInputBar
-    ///
-    /// - left: Left Stack View
-    /// - right: Bottom Stack View
-    /// - bottom: Left Stack View
-    /// - top: Top Stack View
-    public enum Position {
-        case left, right, bottom, top
+    // MARK: - Properties
+    
+    /// The height of the line
+    open var height: CGFloat = 1.0 {
+        didSet {
+            constraints.filter { $0.identifier == "height" }.forEach { $0.constant = height } // Assumes constraint was given an identifier
+            invalidateIntrinsicContentSize()
+        }
     }
     
-    // MARK: Initialization
-    
-    public convenience init(axis: UILayoutConstraintAxis, spacing: CGFloat) {
-        self.init(frame: .zero)
-        self.axis = axis
-        self.spacing = spacing
+    open override var intrinsicContentSize: CGSize {
+        return CGSize(width: super.intrinsicContentSize.width, height: height)
     }
+    
+    // MARK: - Initialization
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }
     
-    required public init(coder: NSCoder) {
-        super.init(coder: coder)
+    required public init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setup()
     }
-    
-    // MARK: - Setup
     
     /// Sets up the default properties
     open func setup() {
+        backgroundColor = .lightGray
         translatesAutoresizingMaskIntoConstraints = false
-        distribution = .fill
-        alignment = .bottom
+        setContentHuggingPriority(.defaultHigh, for: .vertical)
     }
 }
