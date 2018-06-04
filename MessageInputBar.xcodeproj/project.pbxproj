@@ -8,6 +8,23 @@
 
 /* Begin PBXBuildFile section */
 		380F6E7520C4A9A80095975F /* InputItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380F6E7420C4A9A80095975F /* InputItem.swift */; };
+		380F6E7C20C4BB0E0095975F /* InputPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380F6E7B20C4BB0E0095975F /* InputPlugin.swift */; };
+		380F6E8020C4BB950095975F /* AutocompleteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380F6E7E20C4BB950095975F /* AutocompleteManager.swift */; };
+		380F6E8520C4BD480095975F /* AutocompleteCompletion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380F6E8420C4BD480095975F /* AutocompleteCompletion.swift */; };
+		380F6E8720C4BD720095975F /* AutocompleteSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380F6E8620C4BD720095975F /* AutocompleteSession.swift */; };
+		380F6E8A20C4BE5C0095975F /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380F6E8820C4BE5C0095975F /* String+Extensions.swift */; };
+		380F6E8B20C4BE5C0095975F /* UITextView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380F6E8920C4BE5C0095975F /* UITextView+Extensions.swift */; };
+		380F6E8E20C4BE6F0095975F /* AutocompleteManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380F6E8C20C4BE6E0095975F /* AutocompleteManagerDelegate.swift */; };
+		380F6E8F20C4BE6F0095975F /* AutocompleteManagerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380F6E8D20C4BE6E0095975F /* AutocompleteManagerDataSource.swift */; };
+		380F6E9420C4BE980095975F /* AutocompleteTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380F6E9320C4BE980095975F /* AutocompleteTableView.swift */; };
+		380F6E9620C4BEA60095975F /* AutocompleteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380F6E9520C4BEA50095975F /* AutocompleteCell.swift */; };
+		380F6E9920C4BF0E0095975F /* NSMutableAttributedString+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380F6E9820C4BF0D0095975F /* NSMutableAttributedString+Extensions.swift */; };
+		380F6E9C20C4D84A0095975F /* AttachmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380F6E9A20C4D84A0095975F /* AttachmentCell.swift */; };
+		380F6E9D20C4D84A0095975F /* ImageAttachmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380F6E9B20C4D84A0095975F /* ImageAttachmentCell.swift */; };
+		380F6E9F20C4D8530095975F /* AttachmentCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380F6E9E20C4D8530095975F /* AttachmentCollectionView.swift */; };
+		380F6EA220C4D85A0095975F /* AttachmentManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380F6EA020C4D85A0095975F /* AttachmentManagerDelegate.swift */; };
+		380F6EA320C4D85A0095975F /* AttachmentManagerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380F6EA120C4D85A0095975F /* AttachmentManagerDataSource.swift */; };
+		380F6EA520C4D86D0095975F /* AttachmentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380F6EA420C4D86D0095975F /* AttachmentManager.swift */; };
 		386FB18620C496C1006A93BA /* MessageInputBar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 386FB17C20C496C1006A93BA /* MessageInputBar.framework */; };
 		386FB18D20C496C1006A93BA /* MessageInputBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 386FB17F20C496C1006A93BA /* MessageInputBar.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		386FB19C20C499B3006A93BA /* InputBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386FB19620C499B2006A93BA /* InputBarButtonItem.swift */; };
@@ -38,6 +55,23 @@
 		380F6E7020C4A6FE0095975F /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		380F6E7120C4A6FE0095975F /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		380F6E7420C4A9A80095975F /* InputItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputItem.swift; sourceTree = "<group>"; };
+		380F6E7B20C4BB0E0095975F /* InputPlugin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputPlugin.swift; sourceTree = "<group>"; };
+		380F6E7E20C4BB950095975F /* AutocompleteManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutocompleteManager.swift; sourceTree = "<group>"; };
+		380F6E8420C4BD480095975F /* AutocompleteCompletion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompleteCompletion.swift; sourceTree = "<group>"; };
+		380F6E8620C4BD720095975F /* AutocompleteSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompleteSession.swift; sourceTree = "<group>"; };
+		380F6E8820C4BE5C0095975F /* String+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		380F6E8920C4BE5C0095975F /* UITextView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextView+Extensions.swift"; sourceTree = "<group>"; };
+		380F6E8C20C4BE6E0095975F /* AutocompleteManagerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutocompleteManagerDelegate.swift; sourceTree = "<group>"; };
+		380F6E8D20C4BE6E0095975F /* AutocompleteManagerDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutocompleteManagerDataSource.swift; sourceTree = "<group>"; };
+		380F6E9320C4BE980095975F /* AutocompleteTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutocompleteTableView.swift; sourceTree = "<group>"; };
+		380F6E9520C4BEA50095975F /* AutocompleteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutocompleteCell.swift; sourceTree = "<group>"; };
+		380F6E9820C4BF0D0095975F /* NSMutableAttributedString+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString+Extensions.swift"; sourceTree = "<group>"; };
+		380F6E9A20C4D84A0095975F /* AttachmentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttachmentCell.swift; sourceTree = "<group>"; };
+		380F6E9B20C4D84A0095975F /* ImageAttachmentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageAttachmentCell.swift; sourceTree = "<group>"; };
+		380F6E9E20C4D8530095975F /* AttachmentCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttachmentCollectionView.swift; sourceTree = "<group>"; };
+		380F6EA020C4D85A0095975F /* AttachmentManagerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttachmentManagerDelegate.swift; sourceTree = "<group>"; };
+		380F6EA120C4D85A0095975F /* AttachmentManagerDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttachmentManagerDataSource.swift; sourceTree = "<group>"; };
+		380F6EA420C4D86D0095975F /* AttachmentManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttachmentManager.swift; sourceTree = "<group>"; };
 		386FB17C20C496C1006A93BA /* MessageInputBar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MessageInputBar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		386FB17F20C496C1006A93BA /* MessageInputBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageInputBar.h; sourceTree = "<group>"; };
 		386FB18020C496C1006A93BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -79,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				380F6E7420C4A9A80095975F /* InputItem.swift */,
+				380F6E7B20C4BB0E0095975F /* InputPlugin.swift */,
 				386FB19920C499B3006A93BA /* MessageInputBarDelegate.swift */,
 			);
 			path = Protocols;
@@ -88,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				386FB1A420C49B39006A93BA /* UIView+Extensions.swift */,
+				380F6E9820C4BF0D0095975F /* NSMutableAttributedString+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -118,12 +154,99 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		380F6E7D20C4BB730095975F /* Plugins */ = {
+			isa = PBXGroup;
+			children = (
+				380F6E8220C4BBAD0095975F /* AttachmentManager */,
+				380F6E8320C4BBB50095975F /* AutocompleteManager */,
+			);
+			path = Plugins;
+			sourceTree = "<group>";
+		};
+		380F6E8220C4BBAD0095975F /* AttachmentManager */ = {
+			isa = PBXGroup;
+			children = (
+				380F6EA420C4D86D0095975F /* AttachmentManager.swift */,
+				380F6EA620C4D8750095975F /* Views */,
+				380F6EA720C4D87C0095975F /* Protocols */,
+			);
+			path = AttachmentManager;
+			sourceTree = "<group>";
+		};
+		380F6E8320C4BBB50095975F /* AutocompleteManager */ = {
+			isa = PBXGroup;
+			children = (
+				380F6E7E20C4BB950095975F /* AutocompleteManager.swift */,
+				380F6E9720C4BEA90095975F /* Views */,
+				380F6E9220C4BE7E0095975F /* Models */,
+				380F6E9120C4BE780095975F /* Protocols */,
+				380F6E9020C4BE720095975F /* Extensions */,
+			);
+			path = AutocompleteManager;
+			sourceTree = "<group>";
+		};
+		380F6E9020C4BE720095975F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				380F6E8820C4BE5C0095975F /* String+Extensions.swift */,
+				380F6E8920C4BE5C0095975F /* UITextView+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		380F6E9120C4BE780095975F /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				380F6E8D20C4BE6E0095975F /* AutocompleteManagerDataSource.swift */,
+				380F6E8C20C4BE6E0095975F /* AutocompleteManagerDelegate.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		380F6E9220C4BE7E0095975F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				380F6E8420C4BD480095975F /* AutocompleteCompletion.swift */,
+				380F6E8620C4BD720095975F /* AutocompleteSession.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		380F6E9720C4BEA90095975F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				380F6E9520C4BEA50095975F /* AutocompleteCell.swift */,
+				380F6E9320C4BE980095975F /* AutocompleteTableView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		380F6EA620C4D8750095975F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				380F6E9A20C4D84A0095975F /* AttachmentCell.swift */,
+				380F6E9B20C4D84A0095975F /* ImageAttachmentCell.swift */,
+				380F6E9E20C4D8530095975F /* AttachmentCollectionView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		380F6EA720C4D87C0095975F /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				380F6EA020C4D85A0095975F /* AttachmentManagerDelegate.swift */,
+				380F6EA120C4D85A0095975F /* AttachmentManagerDataSource.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		386FB17220C496C1006A93BA = {
 			isa = PBXGroup;
 			children = (
 				380F6E7020C4A6FE0095975F /* README.md */,
 				380F6E7120C4A6FE0095975F /* CHANGELOG.md */,
 				380F6E6F20C4A6FE0095975F /* MessageInputBar.podspec */,
+				380F6E7D20C4BB730095975F /* Plugins */,
 				386FB17E20C496C1006A93BA /* Sources */,
 				386FB18920C496C1006A93BA /* Tests */,
 				386FB17D20C496C1006A93BA /* Products */,
@@ -274,15 +397,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				380F6E8020C4BB950095975F /* AutocompleteManager.swift in Sources */,
+				380F6EA320C4D85A0095975F /* AttachmentManagerDataSource.swift in Sources */,
+				380F6EA220C4D85A0095975F /* AttachmentManagerDelegate.swift in Sources */,
+				380F6E7C20C4BB0E0095975F /* InputPlugin.swift in Sources */,
 				386FB19E20C499B3006A93BA /* InputTextView.swift in Sources */,
 				386FB19F20C499B3006A93BA /* MessageInputBarDelegate.swift in Sources */,
 				380F6E7520C4A9A80095975F /* InputItem.swift in Sources */,
+				380F6E8720C4BD720095975F /* AutocompleteSession.swift in Sources */,
+				380F6EA520C4D86D0095975F /* AttachmentManager.swift in Sources */,
+				380F6E8F20C4BE6F0095975F /* AutocompleteManagerDataSource.swift in Sources */,
 				386FB1A020C499B3006A93BA /* MessageInputBar.swift in Sources */,
 				386FB1A120C499B3006A93BA /* SeparatorLine.swift in Sources */,
+				380F6E9620C4BEA60095975F /* AutocompleteCell.swift in Sources */,
 				386FB19D20C499B3006A93BA /* InputStackView.swift in Sources */,
+				380F6E8A20C4BE5C0095975F /* String+Extensions.swift in Sources */,
+				380F6E9D20C4D84A0095975F /* ImageAttachmentCell.swift in Sources */,
+				380F6E9C20C4D84A0095975F /* AttachmentCell.swift in Sources */,
 				386FB1A320C49A9B006A93BA /* NSConstraintLayoutSet.swift in Sources */,
+				380F6E8520C4BD480095975F /* AutocompleteCompletion.swift in Sources */,
+				380F6E9920C4BF0E0095975F /* NSMutableAttributedString+Extensions.swift in Sources */,
+				380F6E8E20C4BE6F0095975F /* AutocompleteManagerDelegate.swift in Sources */,
 				386FB1A520C49B39006A93BA /* UIView+Extensions.swift in Sources */,
+				380F6E9420C4BE980095975F /* AutocompleteTableView.swift in Sources */,
+				380F6E9F20C4D8530095975F /* AttachmentCollectionView.swift in Sources */,
 				386FB19C20C499B3006A93BA /* InputBarButtonItem.swift in Sources */,
+				380F6E8B20C4BE5C0095975F /* UITextView+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

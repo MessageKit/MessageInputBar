@@ -234,8 +234,12 @@ open class InputTextView: UITextView {
         if isImagePasteEnabled {
             pasteImageInTextContainer(with: image)
         } else {
-            // TODO: - Uncomment when InputManager's have been added
-//            messageInputBar?.inputManagers.forEach { $0.handleInput(of: image) }
+            // Try to pass image paste to one of the plugins, exit on first successful handling
+            for plugin in messageInputBar?.plugins ?? [] {
+                if plugin.handleInput(of: image) {
+                    return
+                }
+            }
         }
     }
     
