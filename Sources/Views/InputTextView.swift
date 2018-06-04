@@ -47,7 +47,7 @@ open class InputTextView: UITextView {
     open override var attributedText: NSAttributedString! {
         didSet {
             postTextViewDidChangeNotification()
-            placeholderLabel.isHidden = !text.isEmpty
+            placeholderLabel.isHidden = !attributedText.string.isEmpty
         }
     }
     
@@ -178,19 +178,10 @@ open class InputTextView: UITextView {
             right:   placeholderLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -placeholderLabelInsets.right),
             centerX: placeholderLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             centerY: placeholderLabel.centerYAnchor.constraint(equalTo: centerYAnchor)
-            )
+        )
         placeholderLabelConstraintSet?.centerX?.priority = .defaultLow
         placeholderLabelConstraintSet?.centerY?.priority = .defaultLow
         placeholderLabelConstraintSet?.activate()
-    }
-    // swiftlint:enable colon
-    
-    /// Adds the required notification observers
-    private func setupObservers() {
-        
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(InputTextView.redrawTextAttachments),
-                                               name: .UIDeviceOrientationDidChange, object: nil)
     }
     
     /// Updates the placeholderLabels constraint constants to match the placeholderLabelInsets
@@ -202,10 +193,27 @@ open class InputTextView: UITextView {
         placeholderLabelConstraintSet?.right?.constant = -placeholderLabelInsets.right
     }
     
-    // MARK: - Notification
+    /// Adds a notification for .UITextViewTextDidChange to detect when the placeholderLabel
+    /// should be hidden or shown
+    private func setupObservers() {
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(InputTextView.redrawTextAttachments),
+                                               name: .UIDeviceOrientationDidChange, object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(InputTextView.textViewTextDidChange),
+                                               name: .UITextViewTextDidChange, object: nil)
+    }
+    
+    // MARK: - Notifications
     
     private func postTextViewDidChangeNotification() {
         NotificationCenter.default.post(name: .UITextViewTextDidChange, object: self)
+    }
+    
+    @objc
+    private func textViewTextDidChange() {
+        placeholderLabel.isHidden = !text.isEmpty
     }
     
     // MARK: - Image Paste Support
@@ -223,14 +231,19 @@ open class InputTextView: UITextView {
         guard let image = UIPasteboard.general.image else {
             return super.paste(sender)
         }
-        pasteImageInTextContainer(with: image)
+        if isImagePasteEnabled {
+            pasteImageInTextContainer(with: image)
+        } else {
+            // TODO: - Uncomment when InputManager's have been added
+//            messageInputBar?.inputManagers.forEach { $0.handleInput(of: image) }
+        }
     }
     
     /// Addes a new UIImage to the NSTextContainer as an NSTextAttachment
     ///
     /// - Parameter image: The image to add
     private func pasteImageInTextContainer(with image: UIImage) {
-
+        
         // Add the new image as an NSTextAttachment
         let attributedImageString = NSAttributedString(attachment: textAttachment(using: image))
         
@@ -247,7 +260,7 @@ open class InputTextView: UITextView {
         let attributes: [NSAttributedStringKey: Any] = [
             NSAttributedStringKey.font: font ?? UIFont.preferredFont(forTextStyle: .body),
             NSAttributedStringKey.foregroundColor: textColor ?? .black
-            ]
+        ]
         newAttributedStingComponent.addAttributes(attributes, range: NSRange(location: 0, length: newAttributedStingComponent.length))
         
         textStorage.beginEditing()
@@ -258,9 +271,9 @@ open class InputTextView: UITextView {
         // Advance the range to the selected range plus the number of characters added
         let location = selectedRange.location + (isEmpty ? 2 : 3)
         selectedRange = NSRange(location: location, length: 0)
-    
+        
         // Broadcast a notification to recievers such as the MessageInputBar which will handle resizing
-        NotificationCenter.default.post(name: .UITextViewTextDidChange, object: self)
+        postTextViewDidChangeNotification()
     }
     
     /// Returns an NSTextAttachment the provided image that will fit inside the NSTextContainer
