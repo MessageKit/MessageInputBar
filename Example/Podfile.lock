@@ -1,16 +1,22 @@
 PODS:
-  - MessageInputBar (0.1.0)
+  - MessageInputBar (0.1.0):
+    - MessageInputBar/AttachmentManager (= 0.1.0)
+    - MessageInputBar/AutocompleteManager (= 0.1.0)
+  - MessageInputBar/AttachmentManager (0.1.0)
+  - MessageInputBar/AutocompleteManager (0.1.0)
 
 DEPENDENCIES:
   - MessageInputBar (from `../`)
+  - MessageInputBar/AttachmentManager (from `../`)
+  - MessageInputBar/AutocompleteManager (from `../`)
 
 EXTERNAL SOURCES:
   MessageInputBar:
     :path: "../"
 
 SPEC CHECKSUMS:
-  MessageInputBar: 3e04412ea8a386b41088012f8c9bd67e665a70c1
+  MessageInputBar: 355bc391ea24f79b0eb47e278aa3a94165d63f53
 
-PODFILE CHECKSUM: 226791787b6af407d42da6f779d208a2567eec5a
+PODFILE CHECKSUM: 59ceff645e2e779969697ee2390f43a1a67332f9
 
 COCOAPODS: 1.5.2

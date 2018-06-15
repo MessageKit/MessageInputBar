@@ -2,6 +2,9 @@ platform :ios, '9.0'
 
 target 'Example' do
   use_frameworks!
+
   pod 'MessageInputBar', :path => '../'
+  pod 'MessageInputBar/AttachmentManager', :path => '../'
+  pod 'MessageInputBar/AutocompleteManager', :path => '../'
 
 end
