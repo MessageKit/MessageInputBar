@@ -4,7 +4,6 @@ Pod::Spec.new do |s|
     s.platform = :ios
     s.name = 'MessageInputBar'
     s.summary = 'A powerful InputAccessoryView ideal for messaging applications.'
-    s.source = { :git => 'https://github.com/MessageKit/MessageInputBar.git', :tag => s.version }
     s.homepage = 'https://github.com/MessageKit/MessageInputBar'
     s.requires_arc = true
 
@@ -14,6 +13,7 @@ Pod::Spec.new do |s|
       "SWIFT_VERSION" => "4.0",
     }
     s.ios.deployment_target = '9.0'
+    s.source = { :git => 'https://github.com/MessageKit/MessageInputBar.git', :tag => s.version }
 
     # 3 - License
     s.license = { :type => "MIT", :file => "LICENSE.md" }
