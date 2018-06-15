@@ -267,6 +267,9 @@ open class MessageInputBar: UIView {
         return [leftStackViewItems, rightStackViewItems, bottomStackViewItems, topStackViewItems, nonStackViewItems].flatMap { $0 }
     }
     
+    /// The plugins injected into the MessageInputBar
+    open var plugins: [InputPlugin] = []
+    
     // MARK: - Auto-Layout Management
     
     private var textViewLayoutSet: NSLayoutConstraintSet?
@@ -743,6 +746,11 @@ open class MessageInputBar: UIView {
     @objc
     open func inputTextViewDidEndEditing() {
         items.forEach { $0.keyboardEditingEndsAction() }
+    }
+    
+    /// Invalidates each of the plugins injected into the MessageInputBar
+    open func invalidatePlugins() {
+        plugins.forEach  { $0.invalidate() }
     }
     
     // MARK: - User Actions
