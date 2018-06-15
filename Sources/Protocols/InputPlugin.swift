@@ -25,7 +25,7 @@
 import UIKit
 
 /// `InputPlugin` is a protocol that makes integrating plugins to the `MessageInputBar` easy.
-public protocol InputPlugin: class {
+public protocol InputPlugin: AnyObject {
     
     /// Should reload the state if the `InputPlugin`
     func reloadData()

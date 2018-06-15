@@ -78,7 +78,7 @@ Add your app to the list of apps using this library and make a pull request.
 ## MessageKit Core Team
 
 - [@SD10](https://github.com/sd10), Steven Deutsch
-- [@nathantannar4](https://github.com/nathantannar4), Nathan Tannar (MessageInputBar Owner)
+- [@nathantannar4](https://github.com/nathantannar4), Nathan Tannar (MessageInputBar Maintainer)
 - [@zhongwuzw](https://github.com/zhongwuzw), Wu Zhong
 
 ## Thanks
