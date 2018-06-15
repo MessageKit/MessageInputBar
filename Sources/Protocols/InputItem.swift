@@ -25,7 +25,7 @@
 import UIKit
 
 /// InputItem is a protocol that links elements to the MessageInputBar to make them reactive
-public protocol InputItem: class {
+public protocol InputItem: AnyObject {
     
     /// A reference to the MessageInputBar. Set automatically when inserted into an InputStackView
     var messageInputBar: MessageInputBar? { get set }

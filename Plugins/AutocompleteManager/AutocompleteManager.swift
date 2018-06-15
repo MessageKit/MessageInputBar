@@ -24,7 +24,7 @@
 
 import UIKit
 
-open class AutocompleteManager: NSObject, InputPlugin {
+open class AutocompleteManager: NSObject, InputPlugin, UITextViewDelegate, UITableViewDelegate, UITableViewDataSource {
     
     // MARK: - Properties [Public]
     
@@ -34,8 +34,8 @@ open class AutocompleteManager: NSObject, InputPlugin {
     /// A protocol that more precisely defines `AutocompleteManager` logic
     open weak var delegate: AutocompleteManagerDelegate?
     
-    /// A reference to the `InputTextView` that the `AutocompleteManager` is using
-    private(set) public weak var inputTextView: InputTextView?
+    /// A reference to the `UITextView` that the `AutocompleteManager` is using
+    private(set) public weak var textView: UITextView?
     
     /// An ongoing session reference that holds the prefix, range and text to complete with
     private(set) public var currentSession: AutocompleteSession? { didSet { layoutIfNeeded() } }
@@ -108,8 +108,8 @@ open class AutocompleteManager: NSObject, InputPlugin {
     
     public init(for textView: InputTextView) {
         super.init()
-        self.inputTextView = textView
-        self.inputTextView?.delegate = self
+        self.textView = textView
+        self.textView?.delegate = self
     }
     
     // MARK: - InputPlugin
@@ -117,7 +117,7 @@ open class AutocompleteManager: NSObject, InputPlugin {
     /// Reloads the InputPlugin's session
     open func reloadData() {
 
-        guard let result = inputTextView?.find(prefixes: autocompletePrefixes) else {
+        guard let result = textView?.find(prefixes: autocompletePrefixes) else {
             invalidate()
             return
         }
@@ -135,7 +135,7 @@ open class AutocompleteManager: NSObject, InputPlugin {
     ///
     /// - Parameter object: A string to append
     open func handleInput(of object: AnyObject) -> Bool {
-        guard let newText = object as? String, let textView = inputTextView else { return false }
+        guard let newText = object as? String, let textView = textView else { return false }
         let attributedString = NSMutableAttributedString(attributedString: textView.attributedText)
         let newAttributedString = NSAttributedString(string: newText, attributes: typingTextAttributes)
         attributedString.append(newAttributedString)
@@ -163,7 +163,7 @@ open class AutocompleteManager: NSObject, InputPlugin {
     ///   - text: The replacement text
     open func autocomplete(with session: AutocompleteSession) {
         
-        guard let textView = inputTextView else { return }
+        guard let textView = textView else { return }
         guard delegate?.autocompleteManager(self, shouldComplete: session.prefix, with: session.filter) != false else { return }
         
         // Create a range that overlaps the prefix
@@ -199,7 +199,7 @@ open class AutocompleteManager: NSObject, InputPlugin {
         
         var typingAttributes = [String: Any]()
         typingTextAttributes.forEach { typingAttributes[$0.key.rawValue] = $0.value }
-        inputTextView?.typingAttributes = typingAttributes
+        textView?.typingAttributes = typingAttributes
     }
     
     
@@ -211,7 +211,7 @@ open class AutocompleteManager: NSObject, InputPlugin {
     ///   - range: The 'NSRange' to insert over
     private func insertAutocomplete(_ autocomplete: String, at session: AutocompleteSession, for range: NSRange) {
         
-        guard let textView = inputTextView else { return }
+        guard let textView = textView else { return }
         
         // Apply the autocomplete attributes
         var attrs = autocompleteTextAttributes[session.prefix] ?? defaultTextAttributes
@@ -263,17 +263,13 @@ open class AutocompleteManager: NSObject, InputPlugin {
         tableView.superview?.layoutIfNeeded()
     }
     
-}
-
-extension AutocompleteManager: UITextViewDelegate {
-    
     // MARK: - UITextViewDelegate
     
-    public func textViewDidChange(_ textView: UITextView) {
+    open func textViewDidChange(_ textView: UITextView) {
         reloadData()
     }
     
-    public func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+    open func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         
         // Ensure that the text to be inserted is not using previous attributes
         preserveTypingAttributes()
@@ -308,31 +304,28 @@ extension AutocompleteManager: UITextViewDelegate {
         return true
     }
     
-}
-
-extension AutocompleteManager: UITableViewDelegate, UITableViewDataSource {
-    
     // MARK: - UITableViewDataSource
     
-    final public func numberOfSections(in tableView: UITableView) -> Int {
+    open func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    final public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return currentAutocompleteOptions.count
     }
     
-    final public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard var session = currentSession else { return UITableViewCell() }
         session.completion = currentAutocompleteOptions[indexPath.row]
+        currentSession = session
         let cell = dataSource?.autocompleteManager(self, tableView: tableView, cellForRowAt: indexPath, for: session) ?? UITableViewCell()
         return cell
     }
     
     // MARK: - UITableViewDelegate
     
-    final public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    open func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         guard var session = currentSession else { return }
         session.completion = currentAutocompleteOptions[indexPath.row]
