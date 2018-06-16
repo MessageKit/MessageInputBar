@@ -17,9 +17,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        UIApplication.shared.statusBarStyle = .lightContent
+        
         window = UIWindow()
         window?.backgroundColor = .white
-        window?.rootViewController = ViewController()
+        let splitViewController = SplitViewController()
+        splitViewController.viewControllers = [UINavigationController(rootViewController: TableViewController())]
+        window?.rootViewController = splitViewController
         window?.makeKeyAndVisible()
         
         return true

@@ -8,19 +8,33 @@
 
 /* Begin PBXBuildFile section */
 		386FB1B320C49B71006A93BA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386FB1B220C49B71006A93BA /* AppDelegate.swift */; };
-		386FB1B520C49B71006A93BA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386FB1B420C49B71006A93BA /* ViewController.swift */; };
+		386FB1B520C49B71006A93BA /* ExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386FB1B420C49B71006A93BA /* ExampleViewController.swift */; };
 		386FB1BA20C49B72006A93BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 386FB1B920C49B72006A93BA /* Assets.xcassets */; };
 		386FB1BD20C49B72006A93BA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 386FB1BB20C49B72006A93BA /* LaunchScreen.storyboard */; };
+		38C2AE7E20D488B700F8079E /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C2AE7D20D488B700F8079E /* SplitViewController.swift */; };
+		38C2AE8020D4896E00F8079E /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C2AE7F20D4896E00F8079E /* TableViewController.swift */; };
+		38C2AE8620D48BCB00F8079E /* GitHawkInputBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C2AE8220D48BCB00F8079E /* GitHawkInputBar.swift */; };
+		38C2AE8720D48BCB00F8079E /* SlackInputBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C2AE8320D48BCB00F8079E /* SlackInputBar.swift */; };
+		38C2AE8820D48BCB00F8079E /* iMessageInputBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C2AE8420D48BCB00F8079E /* iMessageInputBar.swift */; };
+		38C2AE8920D48BCB00F8079E /* FacebookInputBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C2AE8520D48BCB00F8079E /* FacebookInputBar.swift */; };
+		38C2AE8B20D48C4C00F8079E /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C2AE8A20D48C4C00F8079E /* ImageCell.swift */; };
 		644B7F98CA0877F04B101C43 /* Pods_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD50089674513C9952D3B101 /* Pods_Example.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		386FB1AF20C49B71006A93BA /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		386FB1B220C49B71006A93BA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		386FB1B420C49B71006A93BA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		386FB1B420C49B71006A93BA /* ExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleViewController.swift; sourceTree = "<group>"; };
 		386FB1B920C49B72006A93BA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		386FB1BC20C49B72006A93BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		386FB1BE20C49B72006A93BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		38C2AE7D20D488B700F8079E /* SplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
+		38C2AE7F20D4896E00F8079E /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		38C2AE8220D48BCB00F8079E /* GitHawkInputBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHawkInputBar.swift; sourceTree = "<group>"; };
+		38C2AE8320D48BCB00F8079E /* SlackInputBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlackInputBar.swift; sourceTree = "<group>"; };
+		38C2AE8420D48BCB00F8079E /* iMessageInputBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iMessageInputBar.swift; sourceTree = "<group>"; };
+		38C2AE8520D48BCB00F8079E /* FacebookInputBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookInputBar.swift; sourceTree = "<group>"; };
+		38C2AE8A20D48C4C00F8079E /* ImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
 		E41573B0652E6E942E37F7E2 /* Pods-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Example/Pods-Example.release.xcconfig"; sourceTree = "<group>"; };
 		F3640507C14B6B8B154D09F1 /* Pods-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Example/Pods-Example.debug.xcconfig"; sourceTree = "<group>"; };
 		FD50089674513C9952D3B101 /* Pods_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -60,12 +74,27 @@
 			isa = PBXGroup;
 			children = (
 				386FB1B220C49B71006A93BA /* AppDelegate.swift */,
-				386FB1B420C49B71006A93BA /* ViewController.swift */,
+				38C2AE7D20D488B700F8079E /* SplitViewController.swift */,
+				38C2AE7F20D4896E00F8079E /* TableViewController.swift */,
+				386FB1B420C49B71006A93BA /* ExampleViewController.swift */,
+				38C2AE8A20D48C4C00F8079E /* ImageCell.swift */,
+				38C2AE8120D48BBF00F8079E /* Style Examples */,
 				386FB1B920C49B72006A93BA /* Assets.xcassets */,
 				386FB1BB20C49B72006A93BA /* LaunchScreen.storyboard */,
 				386FB1BE20C49B72006A93BA /* Info.plist */,
 			);
 			path = Example;
+			sourceTree = "<group>";
+		};
+		38C2AE8120D48BBF00F8079E /* Style Examples */ = {
+			isa = PBXGroup;
+			children = (
+				38C2AE8520D48BCB00F8079E /* FacebookInputBar.swift */,
+				38C2AE8220D48BCB00F8079E /* GitHawkInputBar.swift */,
+				38C2AE8420D48BCB00F8079E /* iMessageInputBar.swift */,
+				38C2AE8320D48BCB00F8079E /* SlackInputBar.swift */,
+			);
+			path = "Style Examples";
 			sourceTree = "<group>";
 		};
 		994A0F2B22ACBD91CC78EEE2 /* Frameworks */ = {
@@ -196,8 +225,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				386FB1B520C49B71006A93BA /* ViewController.swift in Sources */,
+				38C2AE8920D48BCB00F8079E /* FacebookInputBar.swift in Sources */,
+				38C2AE8820D48BCB00F8079E /* iMessageInputBar.swift in Sources */,
+				38C2AE8B20D48C4C00F8079E /* ImageCell.swift in Sources */,
+				38C2AE8620D48BCB00F8079E /* GitHawkInputBar.swift in Sources */,
+				386FB1B520C49B71006A93BA /* ExampleViewController.swift in Sources */,
 				386FB1B320C49B71006A93BA /* AppDelegate.swift in Sources */,
+				38C2AE7E20D488B700F8079E /* SplitViewController.swift in Sources */,
+				38C2AE8020D4896E00F8079E /* TableViewController.swift in Sources */,
+				38C2AE8720D48BCB00F8079E /* SlackInputBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
