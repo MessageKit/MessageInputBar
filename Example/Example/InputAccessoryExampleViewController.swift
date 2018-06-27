@@ -1,5 +1,5 @@
 //
-//  ExampleViewController.swift
+//  InputAccessoryExampleViewController.swift
 //  Example
 //
 //  Created by Nathan Tannar on 2018-06-03.
@@ -27,7 +27,7 @@ enum MessageInputBarStyle: String {
     }
 }
 
-final class ExampleViewController: UITableViewController {
+final class InputAccessoryExampleViewController: UITableViewController {
     
     // MARK: - Properties
     

@@ -38,6 +38,9 @@
 		386FB1CA20C49F5B006A93BA /* InputBarItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386FB1C620C49EE8006A93BA /* InputBarItemTests.swift */; };
 		386FB1CB20C49F60006A93BA /* InputTextViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386FB1C420C49EE7006A93BA /* InputTextViewTests.swift */; };
 		386FB1CC20C49F60006A93BA /* MessageInputBarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386FB1C520C49EE7006A93BA /* MessageInputBarTests.swift */; };
+		38F14CEF20E319F400E7CBEB /* KeyboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F14CEE20E319F300E7CBEB /* KeyboardManager.swift */; };
+		38F14CF120E31A1400E7CBEB /* KeyboardNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F14CF020E31A1400E7CBEB /* KeyboardNotification.swift */; };
+		38F14CF320E31B8900E7CBEB /* NSNotification+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F14CF220E31B8900E7CBEB /* NSNotification+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +91,9 @@
 		386FB1C420C49EE7006A93BA /* InputTextViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputTextViewTests.swift; sourceTree = "<group>"; };
 		386FB1C520C49EE7006A93BA /* MessageInputBarTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageInputBarTests.swift; sourceTree = "<group>"; };
 		386FB1C620C49EE8006A93BA /* InputBarItemTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputBarItemTests.swift; sourceTree = "<group>"; };
+		38F14CEE20E319F300E7CBEB /* KeyboardManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeyboardManager.swift; path = Example/Example/KeyboardManager.swift; sourceTree = SOURCE_ROOT; };
+		38F14CF020E31A1400E7CBEB /* KeyboardNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardNotification.swift; sourceTree = "<group>"; };
+		38F14CF220E31B8900E7CBEB /* NSNotification+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSNotification+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +130,7 @@
 			children = (
 				386FB1A420C49B39006A93BA /* UIView+Extensions.swift */,
 				380F6E9820C4BF0D0095975F /* NSMutableAttributedString+Extensions.swift */,
+				38F14CF220E31B8900E7CBEB /* NSNotification+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -149,6 +156,8 @@
 		380F6E7A20C4ADC00095975F /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				38F14CF020E31A1400E7CBEB /* KeyboardNotification.swift */,
+				38F14CEE20E319F300E7CBEB /* KeyboardManager.swift */,
 				386FB1A220C49A9B006A93BA /* NSConstraintLayoutSet.swift */,
 			);
 			path = Models;
@@ -402,13 +411,16 @@
 				380F6EA220C4D85A0095975F /* AttachmentManagerDelegate.swift in Sources */,
 				380F6E7C20C4BB0E0095975F /* InputPlugin.swift in Sources */,
 				386FB19E20C499B3006A93BA /* InputTextView.swift in Sources */,
+				38F14CF320E31B8900E7CBEB /* NSNotification+Extensions.swift in Sources */,
 				386FB19F20C499B3006A93BA /* MessageInputBarDelegate.swift in Sources */,
 				380F6E7520C4A9A80095975F /* InputItem.swift in Sources */,
 				380F6E8720C4BD720095975F /* AutocompleteSession.swift in Sources */,
+				38F14CEF20E319F400E7CBEB /* KeyboardManager.swift in Sources */,
 				380F6EA520C4D86D0095975F /* AttachmentManager.swift in Sources */,
 				380F6E8F20C4BE6F0095975F /* AutocompleteManagerDataSource.swift in Sources */,
 				386FB1A020C499B3006A93BA /* MessageInputBar.swift in Sources */,
 				386FB1A120C499B3006A93BA /* SeparatorLine.swift in Sources */,
+				38F14CF120E31A1400E7CBEB /* KeyboardNotification.swift in Sources */,
 				380F6E9620C4BEA60095975F /* AutocompleteCell.swift in Sources */,
 				386FB19D20C499B3006A93BA /* InputStackView.swift in Sources */,
 				380F6E8A20C4BE5C0095975F /* String+Extensions.swift in Sources */,

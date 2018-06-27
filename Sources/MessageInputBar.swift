@@ -270,6 +270,10 @@ open class MessageInputBar: UIView {
     /// The plugins injected into the MessageInputBar
     open var plugins: [InputPlugin] = []
     
+    open override var keyCommands: [UIKeyCommand]? {
+        return [UIKeyCommand(input: "\r", modifierFlags: .command, action: #selector(didSelectSendButton))]
+    }
+    
     // MARK: - Auto-Layout Management
     
     private var textViewLayoutSet: NSLayoutConstraintSet?
@@ -758,6 +762,7 @@ open class MessageInputBar: UIView {
     /// Calls the delegates `didPressSendButtonWith` method
     /// Assumes that the InputTextView's text has been set to empty and calls `inputTextViewDidChange()`
     /// Invalidates each of the inputManagers
+    @objc
     open func didSelectSendButton() {
         delegate?.messageInputBar(self, didPressSendButtonWith: inputTextView.text)
     }
