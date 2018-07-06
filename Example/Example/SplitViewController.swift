@@ -22,20 +22,22 @@
  SOFTWARE.
  */
 
-import Foundation
+import UIKit
 
-/// A structure containing data on the `AutocompleteManager`'s session
-public class AutocompleteSession {
+final class SplitViewController: UISplitViewController {
     
-    public let prefix: String
-    public var range: NSRange
-    public var filter: String
-    public var completion: AutocompleteCompletion?
-    
-    public init?(prefix: String?, range: NSRange?, filter: String?) {
-        guard let pfx = prefix, let rng = range, let flt = filter else { return nil }
-        self.prefix = pfx
-        self.range = rng
-        self.filter = flt
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.delegate = self
     }
+    
 }
+
+extension SplitViewController: UISplitViewControllerDelegate {
+    
+    func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController: UIViewController, onto primaryViewController: UIViewController) -> Bool {
+        return true
+    }
+    
+}
+

@@ -22,20 +22,32 @@
  SOFTWARE.
  */
 
-import Foundation
+import UIKit
 
-/// A structure containing data on the `AutocompleteManager`'s session
-public class AutocompleteSession {
+class ImageCell: UICollectionViewCell {
     
-    public let prefix: String
-    public var range: NSRange
-    public var filter: String
-    public var completion: AutocompleteCompletion?
+    class var reuseIdentifier: String {
+        return "ImageCell"
+    }
     
-    public init?(prefix: String?, range: NSRange?, filter: String?) {
-        guard let pfx = prefix, let rng = range, let flt = filter else { return nil }
-        self.prefix = pfx
-        self.range = rng
-        self.filter = flt
+    let imageView = UIImageView()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupView()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setupView() {
+        addSubview(imageView)
+        imageView.contentMode = .scaleAspectFit
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        imageView.frame = bounds
     }
 }
