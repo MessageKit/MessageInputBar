@@ -106,7 +106,7 @@ open class AutocompleteManager: NSObject, InputPlugin, UITextViewDelegate, UITab
     
     // MARK: - Initialization
     
-    public init(for textView: InputTextView) {
+    public init(for textView: UITextView) {
         super.init()
         self.textView = textView
         self.textView?.delegate = self
@@ -118,7 +118,7 @@ open class AutocompleteManager: NSObject, InputPlugin, UITextViewDelegate, UITab
     open func reloadData() {
 
         guard let result = textView?.find(prefixes: autocompletePrefixes) else {
-            invalidate()
+            unregisterCurrentSession()
             return
         }
         let wordWithoutPrefix = (result.word as NSString).substring(from: result.prefix.utf16.count)
@@ -190,6 +190,24 @@ open class AutocompleteManager: NSObject, InputPlugin, UITextViewDelegate, UITab
         
         // End the session
         unregisterCurrentSession()
+    }
+    
+    /// Returns an attributed string with bolded characters matching the characters typed in the session
+    ///
+    /// - Parameter session: The `AutocompleteSession` to form an `NSMutableAttributedString` with
+    /// - Returns: An `NSMutableAttributedString`
+    open func attributedText(matching session: AutocompleteSession,
+                             fontSize: CGFloat = UIFont.preferredFont(forTextStyle: .body).pointSize) -> NSMutableAttributedString {
+        
+        let completionText = (session.completion?.displayText ?? session.completion?.text) ?? ""
+        
+        // Bolds the text that currently matches the filter
+        let matchingRange = (completionText as NSString).range(of: session.filter, options: .caseInsensitive)
+        let attributedString = NSMutableAttributedString().normal(completionText, fontSize: fontSize)
+        attributedString.addAttributes([.font: UIFont.boldSystemFont(ofSize: fontSize)], range: matchingRange)
+        let stringWithPrefix = NSMutableAttributedString().normal(String(session.prefix), fontSize: fontSize)
+        stringWithPrefix.append(attributedString)
+        return stringWithPrefix
     }
     
     // MARK: - API [Private]
@@ -316,9 +334,8 @@ open class AutocompleteManager: NSObject, InputPlugin, UITextViewDelegate, UITab
     
     open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard var session = currentSession else { return UITableViewCell() }
+        guard let session = currentSession else { fatalError("Attempted to render cells for a nil session") }
         session.completion = currentAutocompleteOptions[indexPath.row]
-        currentSession = session
         let cell = dataSource?.autocompleteManager(self, tableView: tableView, cellForRowAt: indexPath, for: session) ?? UITableViewCell()
         return cell
     }
@@ -327,7 +344,7 @@ open class AutocompleteManager: NSObject, InputPlugin, UITextViewDelegate, UITab
     
     open func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        guard var session = currentSession else { return }
+        guard let session = currentSession else { return }
         session.completion = currentAutocompleteOptions[indexPath.row]
         autocomplete(with: session)
     }
