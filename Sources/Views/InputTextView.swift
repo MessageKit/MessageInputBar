@@ -47,7 +47,7 @@ open class InputTextView: UITextView {
     open override var attributedText: NSAttributedString! {
         didSet {
             postTextViewDidChangeNotification()
-            placeholderLabel.isHidden = !attributedText.string.isEmpty
+            placeholderLabel.isHidden = !text.isEmpty
         }
     }
     
@@ -56,6 +56,7 @@ open class InputTextView: UITextView {
         return parseForAttachedImages()
     }
     
+    /// The images an strings sequentially entered into the `InputTextView`
     open var components: [Any] {
         return parseForComponents()
     }
@@ -178,10 +179,19 @@ open class InputTextView: UITextView {
             right:   placeholderLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -placeholderLabelInsets.right),
             centerX: placeholderLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             centerY: placeholderLabel.centerYAnchor.constraint(equalTo: centerYAnchor)
-        )
+            )
         placeholderLabelConstraintSet?.centerX?.priority = .defaultLow
         placeholderLabelConstraintSet?.centerY?.priority = .defaultLow
         placeholderLabelConstraintSet?.activate()
+    }
+    // swiftlint:enable colon
+    
+    /// Adds the required notification observers
+    private func setupObservers() {
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(InputTextView.redrawTextAttachments),
+                                               name: .UIDeviceOrientationDidChange, object: nil)
     }
     
     /// Updates the placeholderLabels constraint constants to match the placeholderLabelInsets
@@ -193,27 +203,10 @@ open class InputTextView: UITextView {
         placeholderLabelConstraintSet?.right?.constant = -placeholderLabelInsets.right
     }
     
-    /// Adds a notification for .UITextViewTextDidChange to detect when the placeholderLabel
-    /// should be hidden or shown
-    private func setupObservers() {
-        
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(InputTextView.redrawTextAttachments),
-                                               name: .UIDeviceOrientationDidChange, object: nil)
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(InputTextView.textViewTextDidChange),
-                                               name: .UITextViewTextDidChange, object: nil)
-    }
-    
-    // MARK: - Notifications
+    // MARK: - Notification
     
     private func postTextViewDidChangeNotification() {
         NotificationCenter.default.post(name: .UITextViewTextDidChange, object: self)
-    }
-    
-    @objc
-    private func textViewTextDidChange() {
-        placeholderLabel.isHidden = !text.isEmpty
     }
     
     // MARK: - Image Paste Support
@@ -231,23 +224,14 @@ open class InputTextView: UITextView {
         guard let image = UIPasteboard.general.image else {
             return super.paste(sender)
         }
-        if isImagePasteEnabled {
-            pasteImageInTextContainer(with: image)
-        } else {
-            // Try to pass image paste to one of the plugins, exit on first successful handling
-            for plugin in messageInputBar?.plugins ?? [] {
-                if plugin.handleInput(of: image) {
-                    return
-                }
-            }
-        }
+        pasteImageInTextContainer(with: image)
     }
     
     /// Addes a new UIImage to the NSTextContainer as an NSTextAttachment
     ///
     /// - Parameter image: The image to add
     private func pasteImageInTextContainer(with image: UIImage) {
-        
+
         // Add the new image as an NSTextAttachment
         let attributedImageString = NSAttributedString(attachment: textAttachment(using: image))
         
@@ -264,7 +248,7 @@ open class InputTextView: UITextView {
         let attributes: [NSAttributedStringKey: Any] = [
             NSAttributedStringKey.font: font ?? UIFont.preferredFont(forTextStyle: .body),
             NSAttributedStringKey.foregroundColor: textColor ?? .black
-        ]
+            ]
         newAttributedStingComponent.addAttributes(attributes, range: NSRange(location: 0, length: newAttributedStingComponent.length))
         
         textStorage.beginEditing()
@@ -275,9 +259,9 @@ open class InputTextView: UITextView {
         // Advance the range to the selected range plus the number of characters added
         let location = selectedRange.location + (isEmpty ? 2 : 3)
         selectedRange = NSRange(location: location, length: 0)
-        
+    
         // Broadcast a notification to recievers such as the MessageInputBar which will handle resizing
-        postTextViewDidChangeNotification()
+        NotificationCenter.default.post(name: .UITextViewTextDidChange, object: self)
     }
     
     /// Returns an NSTextAttachment the provided image that will fit inside the NSTextContainer
@@ -300,7 +284,7 @@ open class InputTextView: UITextView {
         
         var images = [UIImage]()
         let range = NSRange(location: 0, length: attributedText.length)
-        attributedText.enumerateAttribute(.attachment, in: range, options: [], using: { value, range, _ -> Void in
+        attributedText.enumerateAttribute(.attachment, in: range, options: []) { (value, range, _) in
             
             if let attachment = value as? NSTextAttachment {
                 if let image = attachment.image {
@@ -311,7 +295,7 @@ open class InputTextView: UITextView {
                     images.append(image)
                 }
             }
-        })
+        }
         return images
     }
     
@@ -322,50 +306,32 @@ open class InputTextView: UITextView {
     private func parseForComponents() -> [Any] {
         
         var components = [Any]()
-        var attachments = [(NSRange, UIImage)]()
-        let length = attributedText.length
-        let range = NSRange(location: 0, length: length)
-        attributedText.enumerateAttribute(.attachment, in: range) { (object, range, _) in
-            if let attachment = object as? NSTextAttachment {
-                if let image = attachment.image {
-                    attachments.append((range, image))
-                } else if let image = attachment.image(forBounds: attachment.bounds,
-                                                       textContainer: nil,
-                                                       characterIndex: range.location) {
-                    attachments.append((range,image))
-                }
-            }
-        }
-        
-        var curLocation = 0
-        if attachments.count == 0 {
-            let text = attributedText.string.trimmingCharacters(in: .whitespacesAndNewlines)
-            if !text.isEmpty {
-                components.append(text)
-            }
-        }
-        else {
-            attachments.forEach { (attachment) in
-                let (range, image) = attachment
-                if curLocation < range.location {
-                    let textRange = NSMakeRange(curLocation, range.location)
-                    let text = attributedText.attributedSubstring(from: textRange).string.trimmingCharacters(in: .whitespacesAndNewlines)
-                    if !text.isEmpty {
-                        components.append(text)
+        let range = NSRange(location: 0, length: attributedText.length)
+        var lastComponentWasString = false
+        attributedText.enumerateAttributes(in: range, options: []) { (object, range, _) in
+            
+            if object.keys.contains(.attachment) {
+                if let attachment = object[.attachment] as? NSTextAttachment {
+                    if let image = attachment.image {
+                        components.append(image)
+                    } else if let image = attachment.image(forBounds: attachment.bounds,
+                                                           textContainer: nil,
+                                                           characterIndex: range.location) {
+                        components.append(image)
                     }
+                    lastComponentWasString = false
                 }
-                
-                curLocation = range.location + range.length
-                components.append(image)
-            }
-            if curLocation < length - 1  {
-                let text = attributedText.attributedSubstring(from: NSMakeRange(curLocation, length - curLocation)).string.trimmingCharacters(in: .whitespacesAndNewlines)
-                if !text.isEmpty {
-                    components.append(text)
+            } else {
+                let stringValue = attributedText.attributedSubstring(from: range).string.trimmingCharacters(in: .whitespacesAndNewlines)
+                if !stringValue.isEmpty && !lastComponentWasString {
+                    components.append(stringValue)
+                    lastComponentWasString = true
+                } else if var lastStringValue = components[components.count - 1] as? String {
+                    lastStringValue.append(stringValue)
+                    components[components.count - 1] = lastStringValue
                 }
             }
         }
-
         return components
     }
     
