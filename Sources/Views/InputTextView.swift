@@ -25,7 +25,7 @@
 import UIKit
 
 /**
- A UITextView that has a UILabel embedded for placeholder text
+ A `UITextView` that has a `UILabel` embedded for placeholder text
  
  ## Important Notes ##
  1. Changing the font, textAlignment or textContainerInset automatically performs the same modifications to the placeholderLabel
@@ -40,31 +40,28 @@ open class InputTextView: UITextView {
     open override var text: String! {
         didSet {
             postTextViewDidChangeNotification()
-            placeholderLabel.isHidden = !text.isEmpty
         }
     }
     
     open override var attributedText: NSAttributedString! {
         didSet {
             postTextViewDidChangeNotification()
-            placeholderLabel.isHidden = !text.isEmpty
         }
     }
     
-    /// The images that are currently stored as NSTextAttachment's
+    /// The images that are currently stored as `NSTextAttachment`'s
     open var images: [UIImage] {
         return parseForAttachedImages()
     }
     
-    /// The images an strings sequentially entered into the `InputTextView`
     open var components: [Any] {
         return parseForComponents()
     }
     
     open var isImagePasteEnabled: Bool = true
     
-    /// A UILabel that holds the InputTextView's placeholder text
-    open let placeholderLabel: UILabel = {
+    /// A UILabel that holds the `InputTextView`'s placeholder text
+    public let placeholderLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.textColor = .lightGray
@@ -88,24 +85,31 @@ open class InputTextView: UITextView {
         }
     }
     
-    /// The UIEdgeInsets the placeholderLabel has within the InputTextView
-    open var placeholderLabelInsets: UIEdgeInsets = UIEdgeInsets(top: 4, left: 7, bottom: 4, right: 7) {
+    /// The `UIEdgeInsets` the placeholderLabel has within the `InputTextView`
+    open var placeholderLabelInsets: UIEdgeInsets = UIEdgeInsets(top: 4, left: 7, bottom: 4, right: 7)  {
         didSet {
-            updateConstraintsForPlaceholderLabel()
+            layoutSubviews()
         }
     }
     
-    /// The font of the InputTextView. When set the placeholderLabel's font is also updated
+    /// The font of the `InputTextView`. When set the placeholderLabel's font is also updated
     open override var font: UIFont! {
         didSet {
             placeholderLabel.font = font
         }
     }
     
-    /// The textAlignment of the InputTextView. When set the placeholderLabel's textAlignment is also updated
+    /// The `textAlignment` of the `InputTextView`. When set the placeholderLabel's `textAlignment` is also updated
     open override var textAlignment: NSTextAlignment {
         didSet {
             placeholderLabel.textAlignment = textAlignment
+        }
+    }
+    
+    /// The textContainerInset of the `InputTextView`. When set the placeholderLabelInsets is also updated
+    open override var textContainerInset: UIEdgeInsets {
+        didSet {
+            placeholderLabelInsets = textContainerInset
         }
     }
     
@@ -121,7 +125,7 @@ open class InputTextView: UITextView {
         }
     }
     
-    /// A weak reference to the MessageInputBar that the InputTextView is contained within
+    /// A weak reference to the `MessageInputBar` that the `InputTextView` is contained within
     open weak var messageInputBar: MessageInputBar?
     
     /// The constraints of the placeholderLabel
@@ -224,14 +228,22 @@ open class InputTextView: UITextView {
         guard let image = UIPasteboard.general.image else {
             return super.paste(sender)
         }
-        pasteImageInTextContainer(with: image)
+        if isImagePasteEnabled {
+            pasteImageInTextContainer(with: image)
+        } else {
+            for plugin in messageInputBar?.plugins ?? [] {
+                if plugin.handleInput(of: image) {
+                    return
+                }
+            }
+        }
     }
     
     /// Addes a new UIImage to the NSTextContainer as an NSTextAttachment
     ///
     /// - Parameter image: The image to add
     private func pasteImageInTextContainer(with image: UIImage) {
-
+        
         // Add the new image as an NSTextAttachment
         let attributedImageString = NSAttributedString(attachment: textAttachment(using: image))
         
@@ -248,7 +260,7 @@ open class InputTextView: UITextView {
         let attributes: [NSAttributedStringKey: Any] = [
             NSAttributedStringKey.font: font ?? UIFont.preferredFont(forTextStyle: .body),
             NSAttributedStringKey.foregroundColor: textColor ?? .black
-            ]
+        ]
         newAttributedStingComponent.addAttributes(attributes, range: NSRange(location: 0, length: newAttributedStingComponent.length))
         
         textStorage.beginEditing()
@@ -259,9 +271,9 @@ open class InputTextView: UITextView {
         // Advance the range to the selected range plus the number of characters added
         let location = selectedRange.location + (isEmpty ? 2 : 3)
         selectedRange = NSRange(location: location, length: 0)
-    
+        
         // Broadcast a notification to recievers such as the MessageInputBar which will handle resizing
-        NotificationCenter.default.post(name: .UITextViewTextDidChange, object: self)
+        postTextViewDidChangeNotification()
     }
     
     /// Returns an NSTextAttachment the provided image that will fit inside the NSTextContainer
@@ -284,7 +296,7 @@ open class InputTextView: UITextView {
         
         var images = [UIImage]()
         let range = NSRange(location: 0, length: attributedText.length)
-        attributedText.enumerateAttribute(.attachment, in: range, options: []) { (value, range, _) in
+        attributedText.enumerateAttribute(.attachment, in: range, options: [], using: { value, range, _ -> Void in
             
             if let attachment = value as? NSTextAttachment {
                 if let image = attachment.image {
@@ -295,7 +307,7 @@ open class InputTextView: UITextView {
                     images.append(image)
                 }
             }
-        }
+        })
         return images
     }
     
@@ -306,32 +318,50 @@ open class InputTextView: UITextView {
     private func parseForComponents() -> [Any] {
         
         var components = [Any]()
-        let range = NSRange(location: 0, length: attributedText.length)
-        var lastComponentWasString = false
-        attributedText.enumerateAttributes(in: range, options: []) { (object, range, _) in
-            
-            if object.keys.contains(.attachment) {
-                if let attachment = object[.attachment] as? NSTextAttachment {
-                    if let image = attachment.image {
-                        components.append(image)
-                    } else if let image = attachment.image(forBounds: attachment.bounds,
-                                                           textContainer: nil,
-                                                           characterIndex: range.location) {
-                        components.append(image)
-                    }
-                    lastComponentWasString = false
-                }
-            } else {
-                let stringValue = attributedText.attributedSubstring(from: range).string.trimmingCharacters(in: .whitespacesAndNewlines)
-                if !stringValue.isEmpty && !lastComponentWasString {
-                    components.append(stringValue)
-                    lastComponentWasString = true
-                } else if var lastStringValue = components[components.count - 1] as? String {
-                    lastStringValue.append(stringValue)
-                    components[components.count - 1] = lastStringValue
+        var attachments = [(NSRange, UIImage)]()
+        let length = attributedText.length
+        let range = NSRange(location: 0, length: length)
+        attributedText.enumerateAttribute(.attachment, in: range) { (object, range, _) in
+            if let attachment = object as? NSTextAttachment {
+                if let image = attachment.image {
+                    attachments.append((range, image))
+                } else if let image = attachment.image(forBounds: attachment.bounds,
+                                                       textContainer: nil,
+                                                       characterIndex: range.location) {
+                    attachments.append((range,image))
                 }
             }
         }
+        
+        var curLocation = 0
+        if attachments.count == 0 {
+            let text = attributedText.string.trimmingCharacters(in: .whitespacesAndNewlines)
+            if !text.isEmpty {
+                components.append(text)
+            }
+        }
+        else {
+            attachments.forEach { (attachment) in
+                let (range, image) = attachment
+                if curLocation < range.location {
+                    let textRange = NSMakeRange(curLocation, range.location)
+                    let text = attributedText.attributedSubstring(from: textRange).string.trimmingCharacters(in: .whitespacesAndNewlines)
+                    if !text.isEmpty {
+                        components.append(text)
+                    }
+                }
+                
+                curLocation = range.location + range.length
+                components.append(image)
+            }
+            if curLocation < length - 1  {
+                let text = attributedText.attributedSubstring(from: NSMakeRange(curLocation, length - curLocation)).string.trimmingCharacters(in: .whitespacesAndNewlines)
+                if !text.isEmpty {
+                    components.append(text)
+                }
+            }
+        }
+        
         return components
     }
     
