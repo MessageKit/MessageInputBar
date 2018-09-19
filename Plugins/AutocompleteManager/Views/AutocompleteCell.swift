@@ -89,7 +89,7 @@ open class AutocompleteCell: UITableViewCell {
     
     open func attributedText(matching session: AutocompleteSession) -> NSMutableAttributedString {
         
-        let completionText = (session.completion?.displayText ?? session.completion?.text) ?? ""
+        let completionText = (session.completion?.text ?? session.completion?.text) ?? ""
         
         // Bolds the text that currently matches the filter
         let matchingRange = (completionText as NSString).range(of: session.filter, options: .caseInsensitive)
