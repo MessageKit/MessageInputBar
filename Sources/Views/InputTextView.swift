@@ -86,7 +86,7 @@ open class InputTextView: UITextView {
     }
     
     /// The `UIEdgeInsets` the placeholderLabel has within the `InputTextView`
-    open var placeholderLabelInsets: UIEdgeInsets = UIEdgeInsets(top: 4, left: 7, bottom: 4, right: 7)  {
+    open var placeholderLabelInsets: UIEdgeInsets = UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)  {
         didSet {
             layoutSubviews()
         }
@@ -156,39 +156,16 @@ open class InputTextView: UITextView {
     /// Sets up the default properties
     open func setup() {
         
+        backgroundColor = .clear
         font = UIFont.preferredFont(forTextStyle: .body)
-        textContainerInset = UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
+        isScrollEnabled = false
         scrollIndicatorInsets = UIEdgeInsets(top: .leastNonzeroMagnitude,
                                              left: .leastNonzeroMagnitude,
                                              bottom: .leastNonzeroMagnitude,
                                              right: .leastNonzeroMagnitude)
-        isScrollEnabled = false
-        layer.cornerRadius = 5.0
-        layer.borderWidth = 1.25
-        layer.borderColor = UIColor.lightGray.cgColor
-        allowsEditingTextAttributes = false
-        setupPlaceholderLabel()
+        addSubview(placeholderLabel)
         setupObservers()
     }
-    
-    // swiftlint:disable colon
-    /// Adds the placeholderLabel to the view and sets up its initial constraints
-    private func setupPlaceholderLabel() {
-        
-        addSubview(placeholderLabel)
-        placeholderLabelConstraintSet = NSLayoutConstraintSet(
-            top:     placeholderLabel.topAnchor.constraint(equalTo: topAnchor, constant: placeholderLabelInsets.top),
-            bottom:  placeholderLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -placeholderLabelInsets.bottom),
-            left:    placeholderLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: placeholderLabelInsets.left),
-            right:   placeholderLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -placeholderLabelInsets.right),
-            centerX: placeholderLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            centerY: placeholderLabel.centerYAnchor.constraint(equalTo: centerYAnchor)
-            )
-        placeholderLabelConstraintSet?.centerX?.priority = .defaultLow
-        placeholderLabelConstraintSet?.centerY?.priority = .defaultLow
-        placeholderLabelConstraintSet?.activate()
-    }
-    // swiftlint:enable colon
     
     /// Adds the required notification observers
     private func setupObservers() {
@@ -196,21 +173,26 @@ open class InputTextView: UITextView {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(InputTextView.redrawTextAttachments),
                                                name: .UIDeviceOrientationDidChange, object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(InputTextView.textViewTextDidChange),
+                                               name: .UITextViewTextDidChange, object: nil)
     }
     
-    /// Updates the placeholderLabels constraint constants to match the placeholderLabelInsets
-    private func updateConstraintsForPlaceholderLabel() {
-        
-        placeholderLabelConstraintSet?.top?.constant = placeholderLabelInsets.top
-        placeholderLabelConstraintSet?.bottom?.constant = -placeholderLabelInsets.bottom
-        placeholderLabelConstraintSet?.left?.constant = placeholderLabelInsets.left
-        placeholderLabelConstraintSet?.right?.constant = -placeholderLabelInsets.right
+    /// Layout subviews based on edge insets
+    open override func layoutSubviews() {
+        super.layoutSubviews()
+        placeholderLabel.frame = UIEdgeInsetsInsetRect(bounds, placeholderLabelInsets)
     }
     
     // MARK: - Notification
     
     private func postTextViewDidChangeNotification() {
         NotificationCenter.default.post(name: .UITextViewTextDidChange, object: self)
+    }
+    
+    @objc
+    private func textViewTextDidChange() {
+        placeholderLabel.isHidden = !text.isEmpty
     }
     
     // MARK: - Image Paste Support
