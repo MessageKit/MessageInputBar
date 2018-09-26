@@ -80,11 +80,8 @@ class InputTextViewTests: XCTestCase {
     func testSetup() {
         textView.setup()
         XCTAssertEqual(textView.font, UIFont.preferredFont(forTextStyle: .body))
-        XCTAssertEqual(textView.textContainerInset, UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4))
+        XCTAssertEqual(textView.textContainerInset, UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0))
         XCTAssertFalse(textView.isScrollEnabled)
-        XCTAssertEqual(textView.layer.cornerRadius, 5.0)
-        XCTAssertEqual(textView.layer.borderWidth, 1.25)
-        XCTAssertEqual(textView.layer.borderColor, UIColor.lightGray.cgColor)
         XCTAssertTrue(textView.subviews.contains(textView.placeholderLabel))
     }
 
