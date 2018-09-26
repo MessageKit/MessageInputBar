@@ -24,13 +24,13 @@
 
 import UIKit
 
-public extension NSAttributedStringKey {
+public extension NSAttributedString.Key {
     
     /// A key used for referencing which substrings were autocompleted
     /// by MessageInputBar.AutocompleteManager
-    static let autocompleted = NSAttributedStringKey("com.messagekit.autocompletekey")
+    static let autocompleted = NSAttributedString.Key("com.messagekit.autocompletekey")
     
     /// A key used for referencing the context of autocompleted substrings
     /// by MessageInputBar.AutocompleteManager
-    static let autocompletedContext = NSAttributedStringKey("com.messagekit.autocompletekey.context")
+    static let autocompletedContext = NSAttributedString.Key("com.messagekit.autocompletekey.context")
 }
