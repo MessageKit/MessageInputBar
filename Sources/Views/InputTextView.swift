@@ -88,7 +88,7 @@ open class InputTextView: UITextView {
     /// The `UIEdgeInsets` the placeholderLabel has within the `InputTextView`
     open var placeholderLabelInsets: UIEdgeInsets = UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)  {
         didSet {
-            layoutSubviews()
+            updateConstraintsForPlaceholderLabel()
         }
     }
     
@@ -163,8 +163,25 @@ open class InputTextView: UITextView {
                                              left: .leastNonzeroMagnitude,
                                              bottom: .leastNonzeroMagnitude,
                                              right: .leastNonzeroMagnitude)
-        addSubview(placeholderLabel)
+        setupPlaceholderLabel()
         setupObservers()
+    }
+
+    /// Adds the placeholderLabel to the view and sets up its initial constraints
+    private func setupPlaceholderLabel() {
+
+        addSubview(placeholderLabel)
+        placeholderLabelConstraintSet = NSLayoutConstraintSet(
+            top:     placeholderLabel.topAnchor.constraint(equalTo: topAnchor, constant: placeholderLabelInsets.top),
+            bottom:  placeholderLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -placeholderLabelInsets.bottom),
+            left:    placeholderLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: placeholderLabelInsets.left),
+            right:   placeholderLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -placeholderLabelInsets.right),
+            centerX: placeholderLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+            centerY: placeholderLabel.centerYAnchor.constraint(equalTo: centerYAnchor)
+        )
+        placeholderLabelConstraintSet?.centerX?.priority = .defaultLow
+        placeholderLabelConstraintSet?.centerY?.priority = .defaultLow
+        placeholderLabelConstraintSet?.activate()
     }
     
     /// Adds the required notification observers
@@ -178,11 +195,15 @@ open class InputTextView: UITextView {
                                                name: .UITextViewTextDidChange, object: nil)
     }
     
-    /// Layout subviews based on edge insets
-    open override func layoutSubviews() {
-        super.layoutSubviews()
-        placeholderLabel.frame = UIEdgeInsetsInsetRect(bounds, placeholderLabelInsets)
+    /// Updates the placeholderLabels constraint constants to match the placeholderLabelInsets
+    private func updateConstraintsForPlaceholderLabel() {
+
+        placeholderLabelConstraintSet?.top?.constant = placeholderLabelInsets.top
+        placeholderLabelConstraintSet?.bottom?.constant = -placeholderLabelInsets.bottom
+        placeholderLabelConstraintSet?.left?.constant = placeholderLabelInsets.left
+        placeholderLabelConstraintSet?.right?.constant = -placeholderLabelInsets.right
     }
+    
     
     // MARK: - Notification
     
