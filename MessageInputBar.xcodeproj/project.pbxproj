@@ -25,6 +25,7 @@
 		380F6EA220C4D85A0095975F /* AttachmentManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380F6EA020C4D85A0095975F /* AttachmentManagerDelegate.swift */; };
 		380F6EA320C4D85A0095975F /* AttachmentManagerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380F6EA120C4D85A0095975F /* AttachmentManagerDataSource.swift */; };
 		380F6EA520C4D86D0095975F /* AttachmentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380F6EA420C4D86D0095975F /* AttachmentManager.swift */; };
+		3850269721522D0B00A70D2B /* NSAttributedStringKey+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3850269621522D0B00A70D2B /* NSAttributedStringKey+Extensions.swift */; };
 		386FB18620C496C1006A93BA /* MessageInputBar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 386FB17C20C496C1006A93BA /* MessageInputBar.framework */; };
 		386FB18D20C496C1006A93BA /* MessageInputBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 386FB17F20C496C1006A93BA /* MessageInputBar.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		386FB19C20C499B3006A93BA /* InputBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386FB19620C499B2006A93BA /* InputBarButtonItem.swift */; };
@@ -72,6 +73,7 @@
 		380F6EA020C4D85A0095975F /* AttachmentManagerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttachmentManagerDelegate.swift; sourceTree = "<group>"; };
 		380F6EA120C4D85A0095975F /* AttachmentManagerDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttachmentManagerDataSource.swift; sourceTree = "<group>"; };
 		380F6EA420C4D86D0095975F /* AttachmentManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttachmentManager.swift; sourceTree = "<group>"; };
+		3850269621522D0B00A70D2B /* NSAttributedStringKey+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedStringKey+Extensions.swift"; sourceTree = "<group>"; };
 		386FB17C20C496C1006A93BA /* MessageInputBar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MessageInputBar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		386FB17F20C496C1006A93BA /* MessageInputBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageInputBar.h; sourceTree = "<group>"; };
 		386FB18020C496C1006A93BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 			children = (
 				380F6E8820C4BE5C0095975F /* String+Extensions.swift */,
 				380F6E8920C4BE5C0095975F /* UITextView+Extensions.swift */,
+				3850269621522D0B00A70D2B /* NSAttributedStringKey+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -419,6 +422,7 @@
 				380F6E9920C4BF0E0095975F /* NSMutableAttributedString+Extensions.swift in Sources */,
 				380F6E8E20C4BE6F0095975F /* AutocompleteManagerDelegate.swift in Sources */,
 				386FB1A520C49B39006A93BA /* UIView+Extensions.swift in Sources */,
+				3850269721522D0B00A70D2B /* NSAttributedStringKey+Extensions.swift in Sources */,
 				380F6E9420C4BE980095975F /* AutocompleteTableView.swift in Sources */,
 				380F6E9F20C4D8530095975F /* AttachmentCollectionView.swift in Sources */,
 				386FB19C20C499B3006A93BA /* InputBarButtonItem.swift in Sources */,
