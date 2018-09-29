@@ -44,6 +44,8 @@ github "MessageKit/MessageInputBar"
 - **iOS 9** or later
 - **Swift 4** or later
 
+> Version 0.4.0 onwards is only Swift 4.2 compatible
+
 
 ## Contributing
 
