@@ -28,9 +28,9 @@ extension NSMutableAttributedString {
  
     @discardableResult
     internal func bold(_ text: String, fontSize: CGFloat = UIFont.preferredFont(forTextStyle: .body).pointSize, textColor: UIColor = .black) -> NSMutableAttributedString {
-        let attrs: [NSAttributedStringKey:AnyObject] = [
-            NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: fontSize),
-            NSAttributedStringKey.foregroundColor : textColor
+        let attrs: [NSAttributedString.Key:AnyObject] = [
+            NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: fontSize),
+            NSAttributedString.Key.foregroundColor : textColor
         ]
         let boldString = NSMutableAttributedString(string: text, attributes: attrs)
         self.append(boldString)
@@ -39,9 +39,9 @@ extension NSMutableAttributedString {
     
     @discardableResult
     internal func normal(_ text: String, fontSize: CGFloat = UIFont.preferredFont(forTextStyle: .body).pointSize, textColor: UIColor = .black) -> NSMutableAttributedString {
-        let attrs:[NSAttributedStringKey:AnyObject] = [
-            NSAttributedStringKey.font : UIFont.systemFont(ofSize: fontSize),
-            NSAttributedStringKey.foregroundColor : textColor
+        let attrs:[NSAttributedString.Key:AnyObject] = [
+            NSAttributedString.Key.font : UIFont.systemFont(ofSize: fontSize),
+            NSAttributedString.Key.foregroundColor : textColor
         ]
         let normal =  NSMutableAttributedString(string: text, attributes: attrs)
         self.append(normal)

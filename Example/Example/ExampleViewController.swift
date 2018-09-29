@@ -229,10 +229,10 @@ extension ExampleViewController: AutocompleteManagerDelegate, AutocompleteManage
 
 extension ExampleViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+    private func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
         dismiss(animated: true, completion: {
-            if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            if let pickedImage = info[UIImagePickerController.InfoKey.originalImage.rawValue] as? UIImage {
                 let handled = self.attachmentManager.handleInput(of: pickedImage)
                 if !handled {
                     // throw error
