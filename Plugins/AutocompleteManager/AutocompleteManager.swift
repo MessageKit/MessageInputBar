@@ -312,6 +312,9 @@ open class AutocompleteManager: NSObject, InputPlugin, UITextViewDelegate, UITab
         if appendSpaceOnCompletion {
             newAttributedText.append(NSAttributedString(string: " ", attributes: typingTextAttributes))
         }
+        // Set to blank string to stop system autocomplete from clobbering replacement
+        textView.attributedText = NSAttributedString()
+
         textView.attributedText = newAttributedText
     }
     
