@@ -189,10 +189,10 @@ open class InputTextView: UITextView {
         
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(InputTextView.redrawTextAttachments),
-                                               name: .UIDeviceOrientationDidChange, object: nil)
+                                               name: UIDevice.orientationDidChangeNotification, object: nil)
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(InputTextView.textViewTextDidChange),
-                                               name: .UITextViewTextDidChange, object: nil)
+                                               name: UITextView.textDidChangeNotification, object: nil)
     }
     
     /// Updates the placeholderLabels constraint constants to match the placeholderLabelInsets
@@ -208,7 +208,7 @@ open class InputTextView: UITextView {
     // MARK: - Notification
     
     private func postTextViewDidChangeNotification() {
-        NotificationCenter.default.post(name: .UITextViewTextDidChange, object: self)
+        NotificationCenter.default.post(name: UITextView.textDidChangeNotification, object: self)
     }
     
     @objc
@@ -260,9 +260,9 @@ open class InputTextView: UITextView {
         newAttributedStingComponent.append(NSAttributedString(string: "\n"))
         
         // The attributes that should be applied to the new NSAttributedString to match the current attributes
-        let attributes: [NSAttributedStringKey: Any] = [
-            NSAttributedStringKey.font: font ?? UIFont.preferredFont(forTextStyle: .body),
-            NSAttributedStringKey.foregroundColor: textColor ?? .black
+        let attributes: [NSAttributedString.Key: Any] = [
+            NSAttributedString.Key.font: font ?? UIFont.preferredFont(forTextStyle: .body),
+            NSAttributedString.Key.foregroundColor: textColor ?? .black
         ]
         newAttributedStingComponent.addAttributes(attributes, range: NSRange(location: 0, length: newAttributedStingComponent.length))
         
