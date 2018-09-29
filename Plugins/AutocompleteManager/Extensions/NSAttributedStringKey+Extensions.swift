@@ -22,29 +22,15 @@
  SOFTWARE.
  */
 
-import Foundation
+import UIKit
 
-/// A class containing data on the `AutocompleteManager`'s session
-public class AutocompleteSession {
+public extension NSAttributedStringKey {
     
-    public let prefix: String
-    public let range: NSRange
-    public var filter: String
-    public var completion: AutocompleteCompletion?
-    internal var spaceCounter: Int = 0
+    /// A key used for referencing which substrings were autocompleted
+    /// by MessageInputBar.AutocompleteManager
+    static let autocompleted = NSAttributedStringKey("com.messagekit.autocompletekey")
     
-    public init?(prefix: String?, range: NSRange?, filter: String?) {
-        guard let pfx = prefix, let rng = range, let flt = filter else { return nil }
-        self.prefix = pfx
-        self.range = rng
-        self.filter = flt
-    }
+    /// A key used for referencing the context of autocompleted substrings
+    /// by MessageInputBar.AutocompleteManager
+    static let autocompletedContext = NSAttributedStringKey("com.messagekit.autocompletekey.context")
 }
-
-extension AutocompleteSession: Equatable {
-    
-    public static func == (lhs: AutocompleteSession, rhs: AutocompleteSession) -> Bool {
-        return lhs.prefix == rhs.prefix && lhs.range == rhs.range
-    }
-}
-

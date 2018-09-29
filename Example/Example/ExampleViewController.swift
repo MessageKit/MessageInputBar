@@ -174,9 +174,9 @@ extension ExampleViewController: AutocompleteManagerDelegate, AutocompleteManage
     
     func autocompleteManager(_ manager: AutocompleteManager, autocompleteSourceFor prefix: String) -> [AutocompleteCompletion] {
         if prefix == "@" {
-            return users.map { AutocompleteCompletion($0) }
+            return users.map { AutocompleteCompletion(text: $0) }
         } else if prefix == "#" {
-            return hastags.map { AutocompleteCompletion($0) }
+            return hastags.map { AutocompleteCompletion(text: $0) }
         }
         return []
     }

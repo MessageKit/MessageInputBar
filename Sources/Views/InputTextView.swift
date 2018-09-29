@@ -25,7 +25,7 @@
 import UIKit
 
 /**
- A UITextView that has a UILabel embedded for placeholder text
+ A `UITextView` that has a `UILabel` embedded for placeholder text
  
  ## Important Notes ##
  1. Changing the font, textAlignment or textContainerInset automatically performs the same modifications to the placeholderLabel
@@ -40,18 +40,16 @@ open class InputTextView: UITextView {
     open override var text: String! {
         didSet {
             postTextViewDidChangeNotification()
-            placeholderLabel.isHidden = !text.isEmpty
         }
     }
     
     open override var attributedText: NSAttributedString! {
         didSet {
             postTextViewDidChangeNotification()
-            placeholderLabel.isHidden = !attributedText.string.isEmpty
         }
     }
     
-    /// The images that are currently stored as NSTextAttachment's
+    /// The images that are currently stored as `NSTextAttachment`'s
     open var images: [UIImage] {
         return parseForAttachedImages()
     }
@@ -62,8 +60,8 @@ open class InputTextView: UITextView {
     
     open var isImagePasteEnabled: Bool = true
     
-    /// A UILabel that holds the InputTextView's placeholder text
-    open let placeholderLabel: UILabel = {
+    /// A UILabel that holds the `InputTextView`'s placeholder text
+    public let placeholderLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.textColor = .lightGray
@@ -87,24 +85,31 @@ open class InputTextView: UITextView {
         }
     }
     
-    /// The UIEdgeInsets the placeholderLabel has within the InputTextView
-    open var placeholderLabelInsets: UIEdgeInsets = UIEdgeInsets(top: 4, left: 7, bottom: 4, right: 7) {
+    /// The `UIEdgeInsets` the placeholderLabel has within the `InputTextView`
+    open var placeholderLabelInsets: UIEdgeInsets = UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)  {
         didSet {
             updateConstraintsForPlaceholderLabel()
         }
     }
     
-    /// The font of the InputTextView. When set the placeholderLabel's font is also updated
+    /// The font of the `InputTextView`. When set the placeholderLabel's font is also updated
     open override var font: UIFont! {
         didSet {
             placeholderLabel.font = font
         }
     }
     
-    /// The textAlignment of the InputTextView. When set the placeholderLabel's textAlignment is also updated
+    /// The `textAlignment` of the `InputTextView`. When set the placeholderLabel's `textAlignment` is also updated
     open override var textAlignment: NSTextAlignment {
         didSet {
             placeholderLabel.textAlignment = textAlignment
+        }
+    }
+    
+    /// The textContainerInset of the `InputTextView`. When set the placeholderLabelInsets is also updated
+    open override var textContainerInset: UIEdgeInsets {
+        didSet {
+            placeholderLabelInsets = textContainerInset
         }
     }
     
@@ -120,7 +125,7 @@ open class InputTextView: UITextView {
         }
     }
     
-    /// A weak reference to the MessageInputBar that the InputTextView is contained within
+    /// A weak reference to the `MessageInputBar` that the `InputTextView` is contained within
     open weak var messageInputBar: MessageInputBar?
     
     /// The constraints of the placeholderLabel
@@ -151,25 +156,20 @@ open class InputTextView: UITextView {
     /// Sets up the default properties
     open func setup() {
         
+        backgroundColor = .clear
         font = UIFont.preferredFont(forTextStyle: .body)
-        textContainerInset = UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
+        isScrollEnabled = false
         scrollIndicatorInsets = UIEdgeInsets(top: .leastNonzeroMagnitude,
                                              left: .leastNonzeroMagnitude,
                                              bottom: .leastNonzeroMagnitude,
                                              right: .leastNonzeroMagnitude)
-        isScrollEnabled = false
-        layer.cornerRadius = 5.0
-        layer.borderWidth = 1.25
-        layer.borderColor = UIColor.lightGray.cgColor
-        allowsEditingTextAttributes = false
         setupPlaceholderLabel()
         setupObservers()
     }
-    
-    // swiftlint:disable colon
+
     /// Adds the placeholderLabel to the view and sets up its initial constraints
     private func setupPlaceholderLabel() {
-        
+
         addSubview(placeholderLabel)
         placeholderLabelConstraintSet = NSLayoutConstraintSet(
             top:     placeholderLabel.topAnchor.constraint(equalTo: topAnchor, constant: placeholderLabelInsets.top),
@@ -184,17 +184,7 @@ open class InputTextView: UITextView {
         placeholderLabelConstraintSet?.activate()
     }
     
-    /// Updates the placeholderLabels constraint constants to match the placeholderLabelInsets
-    private func updateConstraintsForPlaceholderLabel() {
-        
-        placeholderLabelConstraintSet?.top?.constant = placeholderLabelInsets.top
-        placeholderLabelConstraintSet?.bottom?.constant = -placeholderLabelInsets.bottom
-        placeholderLabelConstraintSet?.left?.constant = placeholderLabelInsets.left
-        placeholderLabelConstraintSet?.right?.constant = -placeholderLabelInsets.right
-    }
-    
-    /// Adds a notification for .UITextViewTextDidChange to detect when the placeholderLabel
-    /// should be hidden or shown
+    /// Adds the required notification observers
     private func setupObservers() {
         
         NotificationCenter.default.addObserver(self,
@@ -205,7 +195,17 @@ open class InputTextView: UITextView {
                                                name: .UITextViewTextDidChange, object: nil)
     }
     
-    // MARK: - Notifications
+    /// Updates the placeholderLabels constraint constants to match the placeholderLabelInsets
+    private func updateConstraintsForPlaceholderLabel() {
+
+        placeholderLabelConstraintSet?.top?.constant = placeholderLabelInsets.top
+        placeholderLabelConstraintSet?.bottom?.constant = -placeholderLabelInsets.bottom
+        placeholderLabelConstraintSet?.left?.constant = placeholderLabelInsets.left
+        placeholderLabelConstraintSet?.right?.constant = -placeholderLabelInsets.right
+    }
+    
+    
+    // MARK: - Notification
     
     private func postTextViewDidChangeNotification() {
         NotificationCenter.default.post(name: .UITextViewTextDidChange, object: self)
@@ -234,7 +234,6 @@ open class InputTextView: UITextView {
         if isImagePasteEnabled {
             pasteImageInTextContainer(with: image)
         } else {
-            // Try to pass image paste to one of the plugins, exit on first successful handling
             for plugin in messageInputBar?.plugins ?? [] {
                 if plugin.handleInput(of: image) {
                     return
@@ -365,7 +364,7 @@ open class InputTextView: UITextView {
                 }
             }
         }
-
+        
         return components
     }
     

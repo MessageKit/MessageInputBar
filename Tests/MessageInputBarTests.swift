@@ -114,7 +114,7 @@ class MessageInputBarTests: XCTestCase {
     }
 
     func testSendButtonFont_isHeadlineAfterInit() {
-        XCTAssertEqual(sut.sendButton.titleLabel?.font, UIFont.preferredFont(forTextStyle: .headline))
+        XCTAssertEqual(sut.sendButton.titleLabel?.font, UIFont.systemFont(ofSize: 15, weight: .bold))
     }
 
 }

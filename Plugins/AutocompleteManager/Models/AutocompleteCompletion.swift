@@ -26,18 +26,15 @@ import Foundation
 
 public struct AutocompleteCompletion {
     
-    // The string used for sorting and to autocomplete a prefix
-    public var text: String
+    // The String to insert/replace upon autocompletion
+    public let text: String
     
-    // An optional string to display instead of `text`, for example emojis
-    public var displayText: String?
+    // The context of the completion that you may need later when completed
+    public let context: [String: Any]?
     
-    public init(_ text: String) {
+    public init(text: String, context: [String: Any]? = nil) {
         self.text = text
+        self.context = context
     }
-    
-    public init(_ text: String, displayText: String) {
-        self.text = text
-        self.displayText = displayText
-    }
+
 }

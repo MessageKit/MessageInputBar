@@ -24,11 +24,11 @@
 
 import UIKit
 
-extension UITextView {
+internal extension UITextView {
     
-    func find(prefixes: Set<String>) -> (prefix: String, word: String, range: NSRange)? {
+    func find(prefixes: Set<String>, with delimiterSet: CharacterSet) -> (prefix: String, word: String, range: NSRange)? {
         guard prefixes.count > 0,
-            let result = wordAtCaret,
+            let result = wordAtCaret(with: delimiterSet),
             !result.word.isEmpty
             else { return nil }
         for prefix in prefixes {
@@ -39,9 +39,9 @@ extension UITextView {
         return nil
     }
     
-    var wordAtCaret: (word: String, range: NSRange)? {
+    func wordAtCaret(with delimiterSet: CharacterSet) -> (word: String, range: NSRange)? {
         guard let caretRange = self.caretRange,
-            let result = text.word(at: caretRange)
+            let result = text.word(at: caretRange, with: delimiterSet)
             else { return nil }
         
         let location = result.range.lowerBound.encodedOffset
