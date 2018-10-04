@@ -86,7 +86,7 @@ open class InputTextView: UITextView {
     }
     
     /// The `UIEdgeInsets` the placeholderLabel has within the `InputTextView`
-    open var placeholderLabelInsets: UIEdgeInsets = UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)  {
+    open var placeholderLabelInsets: UIEdgeInsets = UIEdgeInsets(top: 8, left: 4, bottom: 8, right: 4)  {
         didSet {
             updateConstraintsForPlaceholderLabel()
         }
