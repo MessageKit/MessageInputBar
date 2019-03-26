@@ -288,7 +288,7 @@ open class InputTextView: UITextView {
         guard let cgImage = image.cgImage else { return NSTextAttachment() }
         let scale = image.size.width / (frame.width - 2 * (textContainerInset.left + textContainerInset.right))
         let textAttachment = NSTextAttachment()
-        textAttachment.image = UIImage(cgImage: cgImage, scale: scale, orientation: .up)
+        textAttachment.image = UIImage(cgImage: cgImage, scale: scale, orientation: image.imageOrientation)
         return textAttachment
     }
     
