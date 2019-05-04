@@ -18,14 +18,14 @@ reason is because the `MessageInputBar` is the `inputAccessoryView` of the
 
 ```Swift
 class ParentVC: UIViewController {
-override func viewDidLoad() {
-super.viewDidLoad()
-let childVC = MessagesViewController()
-addChildViewController(childVC)
-self.view.addSubview(childVC.view)
-childVC.didMove(toParentViewController:self)
-self.becomeFirstResponder()
-}
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        let childVC = MessagesViewController()
+        addChildViewController(childVC)
+        self.view.addSubview(childVC.view)
+        childVC.didMove(toParentViewController:self)
+        self.becomeFirstResponder()
+    }
 }
 ```
 
