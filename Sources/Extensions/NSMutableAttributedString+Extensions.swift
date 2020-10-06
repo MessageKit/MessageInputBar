@@ -43,7 +43,7 @@ extension NSMutableAttributedString {
             NSAttributedString.Key.font : UIFont.systemFont(ofSize: fontSize),
             NSAttributedString.Key.foregroundColor : textColor
         ]
-        let normal =  NSMutableAttributedString(string: text, attributes: attrs)
+        let normal = NSMutableAttributedString(string: text, attributes: attrs)
         self.append(normal)
         return self
     }
